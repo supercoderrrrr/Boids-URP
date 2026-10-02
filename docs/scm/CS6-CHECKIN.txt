@@ -1,0 +1,10 @@
+chore(boids): archive the flocking release and complete tracked scene dependencies
+
+- Preserve the CPU Boids implementation with one-pass separation, alignment and cohesion accumulation using squared-distance filtering
+- Retain bounded steering and speed integration, predictive BoxCollider bounds, LayerMask-filtered SphereCast avoidance and cached Fibonacci-sphere directions
+- Retain staggered wander, optional target steering and horizontal vortex/radial shape controls
+- Add the previously Private SampleSceneProfile asset and its meta file referenced by the scene Global Volume
+- Replace legacy teaching comments and commented-out experiments with concise English comments without trailing periods
+- Verify that comment cleanup preserves all executable tokens in BoidAgent, BoidManager and BoidHelper
+- Prepare a separate Boids-only GitHub publication with a redistributable generated demo, bilingual documentation and sanitized Plastic SCM history
+- Keep FFT ocean changes and unrelated asset additions outside this scoped check-in

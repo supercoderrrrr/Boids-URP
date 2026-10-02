@@ -1,0 +1,9 @@
+* text=auto
+*.cs text eol=lf
+*.shadergraph text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+*.mp4 binary

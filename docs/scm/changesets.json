@@ -1,0 +1,859 @@
+{
+  "source": "Unity Version Control / Plastic SCM",
+  "exportedAt": "2026-10-02T07:44:10.2332889+00:00",
+  "excludedChangesets": [
+    {
+      "changeset": 5,
+      "reason": "FFT ocean implementation in the shared workspace, published separately"
+    }
+  ],
+  "redactions": [
+    "Account email",
+    "Organization and server identifiers",
+    "Absolute workspace paths",
+    "Authentication configuration"
+  ],
+  "note": "Actual SCM metadata, not historical Git commits or complete historical source archives",
+  "changesets": [
+    {
+      "changeset": 0,
+      "date": "2026-08-02T14:25:52+08:00",
+      "branch": "/main",
+      "comment": "",
+      "changedItems": []
+    },
+    {
+      "changeset": 1,
+      "date": "2026-08-03T18:05:03+08:00",
+      "branch": "/main",
+      "comment": "实现 Unity Boids 鱼群集群模拟基础版本\n\n- 搭建 BoidAgent / BoidManager 结构，支持批量生成和管理鱼群个体。\n- 实现 Boids 核心三规则：分离、对齐、聚合，通过局部邻域检测驱动群体行为。\n- 使用速度、期望速度、转向力的 Steering Behavior 模型控制个体运动，并限制最大速度和最大转向力。\n- 实现基于 BoxCollider 的鱼缸游动范围约束，使 Boid 在长方体空间内活动。\n- 实现基于 Physics.SphereCast 的前向障碍物检测与 LayerMask 障碍过滤。\n- 使用黄金螺旋 / Fibonacci Sphere 生成球面候选方向，用于平滑选择避障方向。\n- 加入 Wander 自由游动力，使鱼群具备更自然的随机游动表现。\n- 加入 Vortex Field 混合旋涡力，用切向力和径向力辅助维持鱼群动态形状。\n- 将速度、感知半径、规则权重、鱼缸边界、避障、自由游动和旋涡力参数暴露到 Inspector，方便后续调参与作品集展示。",
+      "changedItems": [
+        {
+          "type": "Added",
+          "path": "/Assets",
+          "previousPath": "/Assets"
+        },
+        {
+          "type": "Added",
+          "path": "/ProjectSettings",
+          "previousPath": "/ProjectSettings"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material",
+          "previousPath": "/Assets/Material"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Boid.mat",
+          "previousPath": "/Assets/Material/Mat_Boid.mat"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Boid.mat.meta",
+          "previousPath": "/Assets/Material/Mat_Boid.mat.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Box.mat",
+          "previousPath": "/Assets/Material/Mat_Box.mat"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Box.mat.meta",
+          "previousPath": "/Assets/Material/Mat_Box.mat.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Obstacle.mat",
+          "previousPath": "/Assets/Material/Mat_Obstacle.mat"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material/Mat_Obstacle.mat.meta",
+          "previousPath": "/Assets/Material/Mat_Obstacle.mat.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Material.meta",
+          "previousPath": "/Assets/Material.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Prefabs",
+          "previousPath": "/Assets/Prefabs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Prefabs/BoidAgent.prefab",
+          "previousPath": "/Assets/Prefabs/BoidAgent.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Prefabs/BoidAgent.prefab.meta",
+          "previousPath": "/Assets/Prefabs/BoidAgent.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Prefabs.meta",
+          "previousPath": "/Assets/Prefabs.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scenes",
+          "previousPath": "/Assets/Scenes"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scenes/SampleScene.unity",
+          "previousPath": "/Assets/Scenes/SampleScene.unity"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scenes/SampleScene.unity.meta",
+          "previousPath": "/Assets/Scenes/SampleScene.unity.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts",
+          "previousPath": "/Assets/Scripts"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidAgent.cs",
+          "previousPath": "/Assets/Scripts/BoidAgent.cs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidAgent.cs.meta",
+          "previousPath": "/Assets/Scripts/BoidAgent.cs.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidHelper.cs",
+          "previousPath": "/Assets/Scripts/BoidHelper.cs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidHelper.cs.meta",
+          "previousPath": "/Assets/Scripts/BoidHelper.cs.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidManager.cs",
+          "previousPath": "/Assets/Scripts/BoidManager.cs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/BoidManager.cs.meta",
+          "previousPath": "/Assets/Scripts/BoidManager.cs.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/ObstacleController.cs",
+          "previousPath": "/Assets/Scripts/ObstacleController.cs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts/ObstacleController.cs.meta",
+          "previousPath": "/Assets/Scripts/ObstacleController.cs.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scripts.meta",
+          "previousPath": "/Assets/Scripts.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings",
+          "previousPath": "/Assets/Settings"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/URP-HighFidelity-Renderer.asset",
+          "previousPath": "/Assets/Settings/URP-HighFidelity-Renderer.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/URP-HighFidelity-Renderer.asset.meta",
+          "previousPath": "/Assets/Settings/URP-HighFidelity-Renderer.asset.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/URP-HighFidelity.asset",
+          "previousPath": "/Assets/Settings/URP-HighFidelity.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/URP-HighFidelity.asset.meta",
+          "previousPath": "/Assets/Settings/URP-HighFidelity.asset.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/UniversalRenderPipelineGlobalSettings.asset",
+          "previousPath": "/Assets/UniversalRenderPipelineGlobalSettings.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/UniversalRenderPipelineGlobalSettings.asset.meta",
+          "previousPath": "/Assets/UniversalRenderPipelineGlobalSettings.asset.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/ProjectSettings/EditorSettings.asset",
+          "previousPath": "/ProjectSettings/EditorSettings.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/ProjectSettings/ProjectSettings.asset",
+          "previousPath": "/ProjectSettings/ProjectSettings.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/ProjectSettings/TagManager.asset",
+          "previousPath": "/ProjectSettings/TagManager.asset"
+        }
+      ]
+    },
+    {
+      "changeset": 2,
+      "date": "2026-08-04T14:59:10+08:00",
+      "branch": "/main",
+      "comment": "- 优化Boid算法",
+      "changedItems": [
+        {
+          "type": "Changed",
+          "path": "/Assets/Material/Mat_Obstacle.mat",
+          "previousPath": "/Assets/Material/Mat_Obstacle.mat"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Prefabs/BoidAgent.prefab",
+          "previousPath": "/Assets/Prefabs/BoidAgent.prefab"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Scenes/SampleScene.unity",
+          "previousPath": "/Assets/Scenes/SampleScene.unity"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Scripts/BoidAgent.cs",
+          "previousPath": "/Assets/Scripts/BoidAgent.cs"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Scripts/BoidManager.cs",
+          "previousPath": "/Assets/Scripts/BoidManager.cs"
+        },
+        {
+          "type": "Changed",
+          "path": "/ProjectSettings/ProjectSettings.asset",
+          "previousPath": "/ProjectSettings/ProjectSettings.asset"
+        }
+      ]
+    },
+    {
+      "changeset": 3,
+      "date": "2026-08-04T20:03:12+08:00",
+      "branch": "/main",
+      "comment": "-一些普通的环境搭建\n-加了一些简单的后处理效果\n-实现水下的fog效果\n-用shader做了简单的洋流扰动",
+      "changedItems": [
+        {
+          "type": "Changed",
+          "path": "/Assets/Scenes/SampleScene.unity",
+          "previousPath": "/Assets/Scenes/SampleScene.unity"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Settings/URP-HighFidelity-Renderer.asset",
+          "previousPath": "/Assets/Settings/URP-HighFidelity-Renderer.asset"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Settings/URP-HighFidelity.asset",
+          "previousPath": "/Assets/Settings/URP-HighFidelity.asset"
+        }
+      ]
+    },
+    {
+      "changeset": 4,
+      "date": "2026-08-05T11:24:15+08:00",
+      "branch": "/main",
+      "comment": "-实现焦散效果",
+      "changedItems": [
+        {
+          "type": "Changed",
+          "path": "/Assets/Scenes/SampleScene.unity",
+          "previousPath": "/Assets/Scenes/SampleScene.unity"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Settings/URP-HighFidelity-Renderer.asset",
+          "previousPath": "/Assets/Settings/URP-HighFidelity-Renderer.asset"
+        }
+      ]
+    },
+    {
+      "changeset": 6,
+      "date": "2026-10-02T15:26:33+08:00",
+      "branch": "/main",
+      "comment": "chore(boids): archive the flocking release and complete tracked scene dependencies\n\n- Preserve the CPU Boids implementation with one-pass separation, alignment and cohesion accumulation using squared-distance filtering\n- Retain bounded steering and speed integration, predictive BoxCollider bounds, LayerMask-filtered SphereCast avoidance and cached Fibonacci-sphere directions\n- Retain staggered wander, optional target steering and horizontal vortex/radial shape controls\n- Add the previously Private SampleSceneProfile asset and its meta file referenced by the scene Global Volume\n- Replace legacy teaching comments and commented-out experiments with concise English comments without trailing periods\n- Verify that comment cleanup preserves all executable tokens in BoidAgent, BoidManager and BoidHelper\n- Prepare a separate Boids-only GitHub publication with a redistributable generated demo, bilingual documentation and sanitized Plastic SCM history\n- Keep FFT ocean changes and unrelated asset additions outside this scoped check-in\n",
+      "changedItems": [
+        {
+          "type": "Changed",
+          "path": "/Assets/Scripts/BoidHelper.cs",
+          "previousPath": "/Assets/Scripts/BoidHelper.cs"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Scripts/BoidAgent.cs",
+          "previousPath": "/Assets/Scripts/BoidAgent.cs"
+        },
+        {
+          "type": "Changed",
+          "path": "/Assets/Scripts/BoidManager.cs",
+          "previousPath": "/Assets/Scripts/BoidManager.cs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/SampleSceneProfile.asset",
+          "previousPath": "/Assets/Settings/SampleSceneProfile.asset"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings/SampleSceneProfile.asset.meta",
+          "previousPath": "/Assets/Settings/SampleSceneProfile.asset.meta"
+        }
+      ]
+    },
+    {
+      "changeset": 7,
+      "date": "2026-10-02T15:38:38+08:00",
+      "branch": "/main",
+      "comment": "chore(boids): preserve required private scene dependencies before GitHub publication\n\n- Audit SampleScene with Unity AssetDatabase.GetDependencies and compare every required asset/meta path with Plastic SCM Private status\n- Track the 96 missing scene dependency items, including fish, coral, rock geometry, materials, animation data and corresponding meta files\n- Preserve Scenes and Settings folder metadata so their Unity GUIDs remain stable\n- Keep these imported third-party source assets in the existing SCM repository only; exclude them from the public GitHub release\n- Verify the isolated source scene builds and records 400 agents without captured runtime errors\n- Provide a separate public demo with generated geometry and the unchanged Boids runtime algorithm\n- Archive actual SCM changeset IDs, dates, original comments and relative paths without account or cloud identifiers\n- Retain local FFT changes and unrelated imported assets outside this Boids dependency check-in\n",
+      "changedItems": [
+        {
+          "type": "Added",
+          "path": "/Assets/Fish",
+          "previousPath": "/Assets/Fish"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Scenes.meta",
+          "previousPath": "/Assets/Scenes.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Settings.meta",
+          "previousPath": "/Assets/Settings.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props",
+          "previousPath": "/Assets/Fish/3D Props"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish.controller",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish.controller"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish.controller.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish.controller.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish@idle.FBX",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish@idle.FBX"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish@idle.FBX.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Ani/fish@idle.FBX.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/BlueTang.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/BlueTang.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/BlueTang.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/BlueTang.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralAB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralAB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralAB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralAB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralE.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralE.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralE.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralE.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralF.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralF.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralF.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralF.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralG.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralG.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralG.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralG.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralH.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralH.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralH.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralH.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNC.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNC.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNC.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralNC.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralND.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralND.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralND.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/CoralND.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockA.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockA.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockA.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockA.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockC.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockC.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockC.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockC.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockE.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockE.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockE.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockE.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockG.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockG.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockG.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockG.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockK.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockK.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockK.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/RockK.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedA.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedA.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedA.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedA.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedC.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedC.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedC.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedC.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedD.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedD.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedD.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/SeaweedD.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellD.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellD.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellD.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/ShellD.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/StarfishB.fbx",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/StarfishB.fbx"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/StarfishB.fbx.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/FBX/StarfishB.fbx.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/BlueTang.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/BlueTang.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/BlueTang.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/BlueTang.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralAB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralAB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralAB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralAB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralE.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralE.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralE.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralE.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralF.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralF.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralF.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralF.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralG.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralG.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralG.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralG.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralH.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralH.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralH.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralH.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNC.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNC.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNC.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralNC.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralND.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralND.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralND.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/CoralND.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockA.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockA.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockA.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockA.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockC.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockC.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockC.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockC.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockE.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockE.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockE.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockE.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockG.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockG.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockG.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockG.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockK.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockK.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockK.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/RockK.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedA.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedA.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedA.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedA.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedC.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedC.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedC.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedC.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedD.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedD.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedD.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/SeaweedD.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellD.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellD.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellD.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/ShellD.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/StarfishB.prefab",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/StarfishB.prefab"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/StarfishB.prefab.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Prefabs/StarfishB.prefab.meta"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture/Color.png",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture/Color.png"
+        },
+        {
+          "type": "Added",
+          "path": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture/Color.png.meta",
+          "previousPath": "/Assets/Fish/3D Props/3D Props Fish/3D Props Fish/Texture/Color.png.meta"
+        }
+      ]
+    }
+  ]
+}

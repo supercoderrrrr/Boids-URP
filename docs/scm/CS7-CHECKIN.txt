@@ -1,0 +1,10 @@
+chore(boids): preserve required private scene dependencies before GitHub publication
+
+- Audit SampleScene with Unity AssetDatabase.GetDependencies and compare every required asset/meta path with Plastic SCM Private status
+- Track the 96 missing scene dependency items, including fish, coral, rock geometry, materials, animation data and corresponding meta files
+- Preserve Scenes and Settings folder metadata so their Unity GUIDs remain stable
+- Keep these imported third-party source assets in the existing SCM repository only; exclude them from the public GitHub release
+- Verify the isolated source scene builds and records 400 agents without captured runtime errors
+- Provide a separate public demo with generated geometry and the unchanged Boids runtime algorithm
+- Archive actual SCM changeset IDs, dates, original comments and relative paths without account or cloud identifiers
+- Retain local FFT changes and unrelated imported assets outside this Boids dependency check-in
