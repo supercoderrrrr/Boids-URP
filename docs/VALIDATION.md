@@ -1,36 +1,48 @@
-# Validation / 验证
+# Boids Validation / Boids 验证
 
-Validated on 2026-10-02 with Unity 2022.3.62f2, URP 14.0.12, Windows x64 and Direct3D 11.
+## English
+
+The public update was validated on **2026-10-03** with Unity 2022.3.62f2, URP 14.0.12, Windows x64 and Direct3D 11. Showcase recordings retain their 2026-10-02 capture results. The two configurations share schooling code and routes but use different art assets.
 
 | Check | Result |
 | --- | --- |
-| Public Unity project import and C# compilation | Passed |
-| Public Windows Development Build | Passed |
-| Isolated original-scene Windows Development Build | Passed |
-| Scene script/material/prefab/camera/bounds validation | Passed, zero findings |
-| Renderer dependency validation | No missing features, FFT features or third-party caustics features in public project |
-| Original core comment edits | Identical executable tokens before/after; public scripts match cleaned source scripts |
-| Public runtime recording | 240 agents, 150 frames, no captured Error/Exception messages |
-| Original-scene runtime recording | 400 agents, 150 frames, no captured Error/Exception messages |
-| Rendered frames | Nonblank 1280 × 720 frames; frame differences confirmed motion; representative frames visually reviewed |
-| Encoded media | H.264 MP4 and looping GIF previews produced; real camera stills included |
-| SCM preservation | Actual CS6 comment/profile check-in and CS7 required-dependency check-in completed |
-| Public text scan | No matched token/private-key/email/workspace-path/source-cloud-ID patterns |
+| Public C# compilation and Development Build | Passed |
+| Distributed scenes | Only `Assets/CinematicReef/Scenes/Boids.unity` |
+| Scene scripts, materials, school meshes and camera | Passed |
+| Excluded package and FFT dependencies | No excluded scene dependencies |
+| Spatial-grid equivalence | Exact match against brute-force radius queries for 257 test points, including negative coordinates and cell boundaries |
+| Unified-school isolation | All three traveling schools matched their isolated positions for 60 steps with a concurrently simulated vortex |
+| Vortex startup | 960 agents present across all 96 sampled angle/height sectors, already circulating |
+| Route collision sampling | 1,347 samples, zero blocked samples |
+| Coral contact checks | 48 foreground and 105 background colonies; zero unsupported or high placements detected |
+| Legacy regressions | Zero-direction steering and signed initial camera pitch checks passed |
+| Public runtime | 1,775 agents, 900 sampled simulation steps, no recorded Error or Exception messages |
+| Media | Updated camera stills, GIF preview and H.264 recordings; public and showcase output visually reviewed |
 
-Machine-readable reports: [publication-validation.json](publication-validation.json), [comment-audit.json](comment-audit.json), [original capture](media/original-underwater-capture.json) and [public capture](media/public-demo-capture.json).
+Reports: [editor validation](boids-editor-validation.json), [public runtime](media/public-boids-runtime.json), [showcase editor](media/showcase-editor.json), [showcase runtime](media/showcase-runtime.json), [publication checks](publication-validation.json) and [text audit](release-audit.json).
 
-The builds contain some Unity shader fallback/dependency warnings during import/stripping. They completed successfully; the representative camera frames do not show magenta error materials. This does not establish correctness for unused shaders or other graphics backends.
+### Measurements
 
-This is an import/build/runtime and publication check, not a full automated behavioral test suite. No isolated EditMode or PlayMode regression suite existed for the original Boids scripts. Keyboard and cursor handling were inspected but not exercised through real desktop input during these command-line captures.
+The licensed showcase recorded 87,711 candidate comparisons per sampled simulation step. Independent all-pairs loops within those same four schools would perform 1,195,250 directed comparisons. This is approximately a **93% reduction in candidates**, not a 93% reduction in frame time.
 
-No runtime FPS, memory benchmark, large-scale stress test, hard-boundary guarantee or zero-overlap guarantee is claimed. Linux, macOS, mobile, XR and alternate graphics APIs are unverified. Fullscreen distortion remains disabled and is not claimed as a validated finished effect. The local original project retains unrelated pending FFT and imported-asset changes.
+On an NVIDIA GeForce RTX 4060 Laptop GPU, showcase school simulation averaged 8.42 ms per sampled step. Its 1600 × 900 synchronous render measurement had a 9.28 ms median and 29.84 ms 95th percentile. That measurement explicitly calls `Camera.Render` and reads one pixel to synchronize GPU completion; PNG encoding is excluded. It is not a normal game-frame FPS benchmark. The public replacement-assets run has its own values in the linked runtime report, and is not an identical-view performance comparison.
+
+### Limits
+
+The grid can approach quadratic work when agents share a dense neighborhood. Route sampling and a one-time 0.12-unit overlap sample do not establish collision-free fish bodies; separation and predictive sphere casts remain steering heuristics. Cross-school body collisions are not simulated.
+
+The water uses approximate transmission, absorption and scattering. It does not reflect the complete reef or refract an above-water scene. Full input interaction, allocation profiling, scaling across agent counts, alternate graphics APIs and other platforms were not tested. The original fullscreen Shader Graph experiment is retained separately and is not the renderer used by the new scene.
+
+Historical Plastic SCM and comment-cleanup reports are preserved as earlier evidence. The later steering and camera fixes intentionally change behavior, so the old comment-only token equivalence is not a claim that today's scripts are unchanged from that snapshot.
 
 ## 简体中文
 
-本次于 2026-10-02 使用 Unity 2022.3.62f2、URP 14.0.12、Windows x64 和 Direct3D 11 验证。公开工程导入、脚本编译、两套场景开发构建以及公开场景引用检查通过；原场景 400 个、公开演示 240 个个体的录制未捕获 Error 或 Exception。
+公开版本于 **2026-10-03** 使用 Unity 2022.3.62f2、URP 14.0.12、Windows x64 和 Direct3D 11 验证。首页展示素材保留 2026-10-02 的录制结果，两版使用相同集群代码与路线，但美术资源不同。
 
-实际画面已检查非空、帧间变化和代表静帧，MP4 与 GIF 已生成。核心注释整理前后可执行 token 相同，公开核心脚本与整理后的原脚本一致。CS6 和 CS7 均为真实 SCM 提交，公开文本扫描未匹配账户邮箱、凭据、本机路径或源工程云标识。
+编译和开发构建通过，仓库仅有正式 `Boids` 场景。257 点网格查询与全遍历结果一致，三组流动鱼与同时运行漩涡的隔离对照连续 60 步一致。漩涡开场已存在全部 960 条鱼，96 个高度与角度分区均有鱼。1347 个路线采样点未检出障碍相交，珊瑚底部接触检查通过。
 
-Unity 构建过程中存在部分 Shader fallback/依赖警告，构建成功且代表画面未显示粉色错误材质；这不代表所有未使用 Shader 与图形后端均已验证。项目原先没有独立的 Boids 回归测试套件，键盘与鼠标只检查了实现，没有在命令行录制中进行真实桌面输入测试。
+公开运行采集了 1775 条鱼与 900 个模拟步，没有记录 Error 或 Exception。截图、GIF 和录像均来自实际 Unity 相机输出，完整结果见上方 JSON 报告。
 
-本次不宣称实测 FPS、不穿模或绝不越界，其他平台和图形 API 尚未测试，全屏扰动仍禁用。本地原工程仍保留其他待提交的 FFT 与资源修改。
+展示版平均每步约 87711 次邻居候选比较，同样四组的全员遍历参考为 1195250 次，候选减少约 93%，不能等同于整帧性能提高 93%。展示版群集计算平均约 8.42 ms / 模拟步；显式渲染并同步 GPU 的中位耗时约 9.28 ms，不是正常游戏帧率。公开版替代资源的实测值另存于对应报告，不能直接作为同场景优化对比。
+
+分离与预测避障没有刚体碰撞约束，密集鱼体和不同鱼群仍可能交叠；水下光学属于实时近似。键鼠完整交互、分配开销、不同鱼数下的扩展性与其他平台没有完整测试。保留的早期 SCM 和纯注释核验只描述当时版本，后续修复确实改变了脚本行为。

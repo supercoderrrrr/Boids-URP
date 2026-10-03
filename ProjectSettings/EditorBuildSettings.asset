@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Demo/BoidsDemo.unity
-    guid: 1170587f53bac0646aec72cc82f6b2c8
+    path: Assets/CinematicReef/Scenes/Boids.unity
+    guid: 683ab9fd550960d4bbb32c9f257410df
   m_configObjects: {}

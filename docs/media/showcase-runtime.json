@@ -1,0 +1,47 @@
+{
+    "agents": 1775,
+    "frames": 900,
+    "intersectionsAt20Seconds": 0,
+    "archPassages": 211,
+    "averageSchoolCpuMs": 8.423778777777791,
+    "averageCandidateTests": 87711,
+    "maximumCorridorError": 7.488884925842285,
+    "vortexAgents": 960,
+    "startupVortexAgents": 960,
+    "startupVortexMinHeight": 4.011143684387207,
+    "startupVortexMaxHeight": 24.994415283203126,
+    "startupVortexAverageSpeed": 2.6244781017303469,
+    "vortexMinHeight": 2.94529128074646,
+    "vortexMaxHeight": 25.911924362182618,
+    "vortexRotationDegreesPerSecond": 20.82077407836914,
+    "schools": [
+        {
+            "name": "ForegroundReefResidents",
+            "averageSpeed": 1.8622742891311646,
+            "maximumGuidanceError": 7.488884925842285,
+            "geometricGuidanceDistanceAtEnd": 2.649163007736206
+        },
+        {
+            "name": "DistantFlowingRibbon",
+            "averageSpeed": 5.018093585968018,
+            "maximumGuidanceError": 3.2929816246032717,
+            "geometricGuidanceDistanceAtEnd": 2.164862871170044
+        },
+        {
+            "name": "ArchPassageSchool",
+            "averageSpeed": 2.7299580574035646,
+            "maximumGuidanceError": 6.334984302520752,
+            "geometricGuidanceDistanceAtEnd": 3.3178837299346926
+        },
+        {
+            "name": "VortexSchool",
+            "averageSpeed": 2.608095645904541,
+            "maximumGuidanceError": 1.449007511138916,
+            "geometricGuidanceDistanceAtEnd": 1.5293612480163575
+        }
+    ],
+    "synchronousRenderMedianMs": 9.278300285339356,
+    "synchronousRender95thMs": 29.835899353027345,
+    "graphicsDevice": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "errors": []
+}

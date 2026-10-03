@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 eulerAngles = transform.eulerAngles;
         yaw = eulerAngles.y;
-        pitch = eulerAngles.x;
+        pitch = Mathf.DeltaAngle(0f, eulerAngles.x);
 
         if (lockCursorOnStart)
         {
@@ -120,5 +120,10 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private void OnDisable()
+    {
+        UnlockCursor();
     }
 }

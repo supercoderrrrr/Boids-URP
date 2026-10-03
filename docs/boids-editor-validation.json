@@ -1,0 +1,14 @@
+{
+    "passed": true,
+    "gridMatchesBruteForce": true,
+    "legacyRegressionChecks": true,
+    "schoolsIndependent": true,
+    "initialVortexReady": true,
+    "routeSamples": 1347,
+    "blockedRouteSamples": 0,
+    "foregroundCorals": 48,
+    "backgroundCorals": 105,
+    "floatingCorals": 0,
+    "highCorals": 0,
+    "issues": []
+}

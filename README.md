@@ -1,168 +1,101 @@
-# Boids Underwater Schooling · Unity URP
+# Boids · Unity URP
 
 [English](#english) | [简体中文](#简体中文)
 
 ## English
 
-A Unity learning and portfolio project combining local Boids steering with predictive obstacle avoidance and an underwater presentation. Each agent integrates its own velocity; separation, alignment and cohesion are evaluated together in one CPU neighbor traversal.
+A Unity learning and portfolio project for coherent underwater schooling. The latest version combines local Boids rules with shared travel corridors, an independent vortex field and instanced rendering. Four schools contain **1,775 fish**, including a **960-fish vortex** already circulating from the first frame.
 
-![Original underwater scene](docs/media/original-underwater.gif)
+![Boids opening](docs/media/boids-opening.gif)
 
-[Original scene recording](docs/media/original-underwater.mp4) · [Public demo recording](docs/media/public-demo.mp4) · [Development archive](DEVELOPMENT.md) · [Actual Plastic SCM history](docs/scm/HISTORY.md)
-
-The first preview shows the original working scene with third-party fish, environment art and caustics. Those source assets are not redistributed. The repository includes a separate, runnable demonstration with generated fish geometry and primitive obstacles, using the same Boids runtime scripts.
-
-![Redistributable public demo](docs/media/public-demo.gif)
+[Opening recording](docs/media/boids-opening.mp4) · [Schooling recording](docs/media/boids-schooling.mp4) · [Vortex close-up](docs/media/boids-vortex.mp4) · [Development](DEVELOPMENT.md) · [Plastic SCM history](docs/scm/HISTORY.md)
 
 ### Technical Highlights
 
-| Feature | Implementation |
+| Technique | Implementation |
 | --- | --- |
-| Local flocking | Separation uses inverse-distance contributions, alignment averages neighbor headings, cohesion steers toward the local center |
-| Steering integration | Desired velocity minus current velocity, per-behavior steering clamp, weighted acceleration, minimum/maximum speed |
-| Neighbor-loop optimization | All three rules share one traversal; squared radii and squared distances avoid unnecessary square roots |
-| Predictive bounds | Evaluate a look-ahead position against six faces of a BoxCollider in local space |
-| Obstacle avoidance | Forward `Physics.SphereCast`, filtered by `LayerMask`, followed by candidate-direction casts |
-| Direction sampling | 300 cached Fibonacci-sphere directions transformed from each agent's local frame |
-| Motion shaping | Staggered wander, optional target steering, horizontal vortex tangent and radial ring correction |
-| Underwater presentation | URP fog and Volume grading; retained fullscreen Shader Graph distortion experiment |
-| Authoring and publication | Inspector parameters, reproducible public-scene builder, fixed-timestep capture utility and sanitized SCM archive |
+| Local flocking | Separation, velocity alignment and cohesion steer each fish within its own school |
+| Spatial grid | Reusable 3D cell heads and linked indices restrict exact distance checks to the current cell and its 26 neighbors |
+| Consistent state | Steering reads the same positions and velocities for all agents before integration |
+| Coherent travel | Closed Catmull-Rom corridors, arc-length lookup, steering look-ahead and staggered nearest-segment progress correction |
+| Vortex shaping | Tangential velocity, radial feedback and slowly varying vertical targets; stratified heights and golden-angle spawn distribution |
+| Obstacle avoidance | Staggered forward sphere casts followed by candidate casts around the current heading |
+| Simulation and rendering | Fixed 30 Hz simulation, interpolated transforms, four instanced fish draws per camera and vertex-shader tail animation |
 
-Main entry points: [BoidAgent.cs](Assets/Scripts/BoidAgent.cs), [BoidManager.cs](Assets/Scripts/BoidManager.cs), [BoidHelper.cs](Assets/Scripts/BoidHelper.cs).
+Each school owns its state and grid. The vortex does not apply steering forces to the traveling schools. Guidance supplies a direction of travel; fish positions still come from integrated velocity.
 
-```mermaid
-flowchart LR
-    N[One neighbor traversal] --> S[Separation]
-    N --> A[Alignment]
-    N --> C[Cohesion]
-    S --> W[Weighted acceleration]
-    A --> W
-    C --> W
-    B[Predictive box bounds] --> W
-    O[SphereCast + Fibonacci directions] --> W
-    M[Wander + vortex + optional target] --> W
-    W --> V[Integrate and clamp velocity]
-    V --> P[Update position and orientation]
-```
+The underwater scene has also been refined, with an animated water surface, depth-dependent absorption and scattering, shadowed light shafts, caustics, suspended particles and bubble columns.
 
-The vortex is an artistic control for a circulating school. It is a horizontal ring field, not a fluid simulation. Grid3D, Burst/Jobs, GPU Boids, SDF interaction and path/flow-field following are not implemented in this release.
+![Arch passage](docs/media/boids-arch.png)
+![Vortex school](docs/media/boids-vortex.png)
 
-### Run the Project
+### Run
 
-1. Clone the repository and open its root folder in **Unity 2022.3.62f2**.
-2. Allow Package Manager to resolve **URP 14.0.12**.
-3. Open `Assets/Demo/BoidsDemo.unity` and press Play.
-4. Select `BoidManager` to inspect behavior parameters; select `SwimVolume` to edit the logical activity area. Obstacles use layer 6 and colliders.
+1. Open the repository in **Unity 2022.3.62f2** and allow Package Manager to resolve **URP 14.0.12**
+2. Open `Assets/CinematicReef/Scenes/Boids.unity`, or choose **Tools > Boids > Open Boids**
+3. Press Play and click the Game view
 
-W/S move along the camera's forward/backward direction, A/D strafe, Q/E descend/ascend, Shift increases speed, and the mouse controls the view. Escape releases the cursor; left-click locks it again.
+WASD moves relative to the view, Q/E descends and ascends, Shift accelerates, the mouse looks around, and Escape releases the cursor. Click the Game view to lock it again.
 
-`Tools > Boids > Rebuild Public Demo` regenerates the public scene, generated mesh, materials and prefab. This publication utility is separate from the earlier SCM development. Rebuilding replaces generated demo assets, so preserve manual demo edits first.
+Select a school to edit its route, speed, perception and separation settings. `ReefEnvironment` controls the underwater optics. **Tools > Boids > Validate Boids** checks the scene and routes. **Rebuild Boids** regenerates the scene and its generated assets, replacing manual edits to that generated content.
 
-### Scene and Parameters
+The showcase recordings use licensed fish and environment assets. Their source files and baked derivatives are excluded from the repository. The included `Boids` scene uses generated fish, corals and textures alongside the authored arch and cliff meshes, with the same schooling runtime. It is the only scene distributed here.
 
-![Public demo still](docs/media/public-demo.png)
+### Code and Evidence
 
-The public demo uses 240 agents and a `64 × 28 × 64` world-space activity box with identity scale. The original scene is configured for 400 agents and a `50 × 80 × 50` logical box. Its disabled BoxCollider GameObject still supplies a direct reference to the steering code; this does not disable the logical bounds calculation.
+- [ReefSchool.cs](Assets/CinematicReef/Scripts/ReefSchool.cs): grid, local rules, corridor and vortex guidance, integration and instancing
+- [ReefSceneBuilder.cs](Assets/CinematicReef/Editor/ReefSceneBuilder.cs): reproducible scene and school setup
+- [ReefValidation.cs](Assets/CinematicReef/Editor/ReefValidation.cs): grid equivalence, school isolation, startup population and route checks
+- [Architecture](docs/ARCHITECTURE.md) · [Validation](docs/VALIDATION.md) · [Capture notes](docs/media/README.md) · [Attribution](THIRD_PARTY_NOTICES.md)
 
-| Parameter | Public Demo |
-| --- | ---: |
-| Min / start / max speed | 3 / 6 / 8 |
-| Separation / perception radius | 1.8 / 4 |
-| Separation / alignment / cohesion weight | 3 / 0.45 / 0.08 |
-| Maximum steering force | 3 |
-| Wall margin / look-ahead / bounds weight | 3 / 3 / 2 |
-| Cast radius / distance / avoidance weight | 1 / 7 / 10 |
-| Wander weight / interval / vertical factor | 0.3 / 1.5 / 0.35 |
-| Vortex radius / tangent / radial weight | 20 / 0.1 / 1 |
-| Target weight | 0 |
+The grid reduces neighbor candidates in this distribution; a dense cell can still approach quadratic work. Separation and sphere casts provide steering rather than rigid-body collision resolution. The vortex is an art-directed velocity field, and the water rendering uses real-time optical approximations. Burst/Jobs, GPU Boids and SDF interaction are not implemented.
 
-These are scene-specific starting values, not an optimal preset for every model size or activity volume. Replace the prefab's `Visual` child to use your own fish model; its head should face local **+Z**. Separation operates on agent centers, so scale its radius when enlarging visuals.
+The project began in Plastic SCM. The first Git commit was a publication snapshot; later work is recorded as actual Git updates. Earlier changesets remain in the [SCM archive](docs/scm/HISTORY.md), with the unrelated FFT work excluded. The independent ocean project is available at [FFT-Ocean-URP](https://github.com/supercoderrrrr/FFT-Ocean-URP).
 
-The fullscreen distortion graph and material are retained under `Assets/Shader`. The Renderer Feature is disabled, matching the working project. Treat it as an experiment, not a demonstrated finished effect.
-
-### Development and Limits
-
-Development began in Plastic SCM. The initial Git commit imports a publication snapshot; it does not represent a one-commit implementation. [DEVELOPMENT.md](DEVELOPMENT.md) explains the technical stages, and [changesets.json](docs/scm/changesets.json) preserves real changeset metadata without account or cloud identifiers. The FFT ocean changeset in the shared workspace is excluded; the ocean project is published separately at [FFT-Ocean-URP](https://github.com/supercoderrrrr/FFT-Ocean-URP).
-
-Neighbor evaluation remains **O(N²)**. Agents read and update state in individual `Update` calls, so this is not a synchronized snapshot simulation. Sphere casts and soft steering are predictive heuristics, not guaranteed collision resolution or hard confinement. Setting both vortex weights to zero is not equivalent to removing its influence in the current code; clear `Vortex Center` to disable that behavior.
-
-Captured frame sequences use a fixed simulation timestep and are encoded at 15 fps. Their playback rate is not an FPS benchmark. Validation evidence and remaining limits are documented in [VALIDATION.md](docs/VALIDATION.md); implementation details are in [ARCHITECTURE.md](docs/ARCHITECTURE.md).
-
-### References and Attribution
-
-The project was developed while studying [Craig Reynolds' Boids](https://www.red3d.com/cwr/boids/), [Sebastian Lague's tutorial](https://www.youtube.com/watch?v=bqtqltqcQhw) and [reference implementation](https://github.com/SebLague/Boids). The Fibonacci-sphere helper follows the sampling approach used by that reference. Third-party credits and license terms are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+References: [Craig Reynolds](https://www.red3d.com/cwr/boids/), [Sebastian Lague's tutorial](https://www.youtube.com/watch?v=bqtqltqcQhw) and [reference implementation](https://github.com/SebLague/Boids).
 
 ---
 
 ## 简体中文
 
-这是一个 Unity 学习与作品集项目，将 Boids 局部转向行为、预测避障与水下场景展示结合起来。每个个体独立积分速度，分离、对齐和聚合通过同一次 CPU 邻居遍历计算。
+这是一个 Unity 学习与作品集项目，展示具有共同游动方向的水下鱼群。新版将 Boids 局部规则、巡游通道、独立漩涡场与实例化渲染结合起来，四组鱼群共 **1775 条鱼**，其中 **960 条漩涡鱼从第一帧就已经环绕游动**。
 
-![原始水下场景](docs/media/original-underwater.gif)
+![Boids 开场](docs/media/boids-opening.gif)
 
-[原始场景录像](docs/media/original-underwater.mp4) · [公开演示录像](docs/media/public-demo.mp4) · [开发记录](DEVELOPMENT.md) · [真实 Plastic SCM 历史](docs/scm/HISTORY.md)
-
-上方展示原始工程，包含第三方鱼模型、海底环境资源和焦散插件。这些源资源不随公开仓库分发。仓库提供另一套可直接运行的演示，使用生成的鱼网格和基础障碍物，并复用相同的 Boids 运行脚本。
-
-![可公开分发的演示](docs/media/public-demo.gif)
+[开场录像](docs/media/boids-opening.mp4) · [流动鱼群录像](docs/media/boids-schooling.mp4) · [漩涡近景](docs/media/boids-vortex.mp4) · [开发记录](DEVELOPMENT.md) · [Plastic SCM 历史](docs/scm/HISTORY.md)
 
 ### 核心技术
 
-| 功能 | 实现方式 |
+| 技术 | 实现方式 |
 | --- | --- |
-| 局部集群 | 分离采用距离倒数贡献，对齐平均邻居朝向，聚合朝局部平均位置转向 |
-| 转向与积分 | 期望速度减当前速度，各行为限制转向力，叠加加速度并限制最低和最高速度 |
-| 邻居遍历优化 | 三条规则共用一次遍历，使用距离平方和半径平方筛选邻居 |
-| 预测边界 | 将前瞻位置变换到 BoxCollider 局部空间，检测六个边界面 |
-| 障碍规避 | 使用前向 SphereCast 和 LayerMask，遇到障碍后检测候选方向 |
-| 球面方向采样 | 缓存 300 个 Fibonacci Sphere 方向，随个体朝向变换到世界空间 |
-| 运动形状控制 | 错开的 Wander 随机方向、可选目标，以及水平旋涡切向与径向修正 |
-| 水下展示 | URP 雾与 Volume 调色，保留全屏扰动 Shader Graph 实验 |
-| 调参与发布 | Inspector 参数、可重建的公开场景工具、固定时间步录制和脱敏 SCM 归档 |
+| 局部集群 | 在各自鱼群内计算分离、速度对齐与聚合 |
+| 三维空间网格 | 复用单元格链表，仅检查当前格与周围 26 格，再按实际距离筛选邻居 |
+| 统一状态快照 | 所有鱼先读取同一批位置和速度计算转向，再统一积分 |
+| 连贯流向 | 闭合 Catmull-Rom 通道、弧长查询、前视转向，以及错开执行的最近线段进度校正 |
+| 漩涡形态 | 切向速度、径向反馈与缓慢纵向起伏；分层高度和黄金角分布避免开场挤成一团 |
+| 障碍规避 | 错开前向球形扫掠，遇到障碍后检测当前朝向附近的候选方向 |
+| 模拟与绘制 | 30 Hz 固定步长、插值显示、每相机四次鱼群实例化绘制，以及顶点着色器摆尾 |
 
-核心代码入口：[BoidAgent.cs](Assets/Scripts/BoidAgent.cs)、[BoidManager.cs](Assets/Scripts/BoidManager.cs)、[BoidHelper.cs](Assets/Scripts/BoidHelper.cs)。旋涡用于控制鱼群循环运动与环形形状，属于美术运动控制。本版本尚未实现 Grid3D、Burst/Jobs、GPU Boids、SDF 交互或路径与流场跟随。
+各组鱼群拥有独立状态和空间网格，漩涡力不会作用到流动鱼群。通道提供游动方向，鱼的位置仍由速度积分产生。
+
+同时精修了海底场景，补充动态水面、随深度变化的吸收与散射、带阴影的丁达尔光、焦散、悬浮颗粒与气泡柱。
 
 ### 打开与操作
 
-1. 克隆仓库，使用 **Unity 2022.3.62f2** 打开根目录。
-2. 等待 Package Manager 安装 **URP 14.0.12**。
-3. 打开 `Assets/Demo/BoidsDemo.unity` 并运行。
-4. 选择 `BoidManager` 查看集群参数，选择 `SwimVolume` 编辑逻辑活动范围。障碍物使用第 6 层并具有 Collider。
+1. 使用 **Unity 2022.3.62f2** 打开仓库，等待安装 **URP 14.0.12**
+2. 打开 `Assets/CinematicReef/Scenes/Boids.unity`，或选择 **Tools > Boids > Open Boids**
+3. 进入 Play 并点击 Game 窗口
 
-W/S 沿摄像机朝向前进或后退，A/D 左右平移，Q/E 下降或上升，Shift 加速，鼠标控制视角。Escape 释放鼠标，左键重新锁定。
+WASD 按观察方向移动，Q/E 下降与上升，Shift 加速，鼠标控制视角，Escape 释放鼠标，点击 Game 重新锁定。
 
-`Tools > Boids > Rebuild Public Demo` 可重新生成场景、鱼网格、材质与 Prefab。该工具是在整理公开版本时加入的，不属于早期 SCM 迭代。重建会覆盖生成的演示资源，请先保留自行修改的演示内容。
+选中 School 可以调整路线、速度、感知与分离参数；`ReefEnvironment` 控制水下光学效果。**Validate Boids** 检查场景与路线，**Rebuild Boids** 会重新生成场景与资源并替换对应的手工修改。
 
-### 场景配置
+展示录像使用了有许可限制的鱼与环境资源，源文件和烘焙衍生网格不随仓库分发。公开 `Boids` 场景使用生成的鱼、珊瑚和贴图，配合制作的拱门与岩壁网格，并运行同一套集群代码。仓库只分发这一套新场景。
 
-![公开演示静帧](docs/media/public-demo.png)
+核心实现见 [ReefSchool.cs](Assets/CinematicReef/Scripts/ReefSchool.cs)，原理与验证见 [ARCHITECTURE.md](docs/ARCHITECTURE.md) 和 [VALIDATION.md](docs/VALIDATION.md)。录像使用固定时间步，播放帧率不代表实际运行 FPS。
 
-公开演示使用 240 个个体，活动区域为 `64 × 28 × 64`，Transform 缩放为 1。原始场景配置为 400 个个体，逻辑活动范围为 `50 × 80 × 50`。原场景虽然禁用了边界物体，但脚本仍直接读取它的 BoxCollider 引用，因此逻辑边界力仍在计算。
+空间网格能减少当前分布下的候选数量，但极密集的单元格仍可能接近平方复杂度。分离和扫掠避障没有刚体碰撞约束，漩涡属于可控制的速度场，水面属于实时光学近似。尚未实现 Burst/Jobs、GPU Boids 或 SDF 交互。
 
-| 参数 | 公开演示值 |
-| --- | ---: |
-| 最低 / 初始 / 最高速度 | 3 / 6 / 8 |
-| 分离 / 感知半径 | 1.8 / 4 |
-| 分离 / 对齐 / 聚合权重 | 3 / 0.45 / 0.08 |
-| 最大转向力 | 3 |
-| 墙面距离 / 前瞻距离 / 边界权重 | 3 / 3 / 2 |
-| 检测球半径 / 检测距离 / 避障权重 | 1 / 7 / 10 |
-| Wander 权重 / 换向间隔 / 垂直因子 | 0.3 / 1.5 / 0.35 |
-| 旋涡半径 / 切向权重 / 径向权重 | 20 / 0.1 / 1 |
-| 目标权重 | 0 |
+项目最初使用 Plastic SCM 开发，首次 Git 提交是发布快照，后续改进通过真实 Git 提交记录。历史变更集保留在 [SCM 归档](docs/scm/HISTORY.md)，FFT 海洋单独发布于 [FFT-Ocean-URP](https://github.com/supercoderrrrr/FFT-Ocean-URP)。
 
-参数是对应场景的起点，不是适合所有模型和场地的最优配置。可以将 Prefab 的 `Visual` 子物体换成自己的鱼模型，鱼头应朝局部 **+Z**。分离判断基于个体中心，放大模型后也应相应调整分离半径。
-
-全屏扰动图和材质保留在 `Assets/Shader`，Renderer Feature 与原工程一样处于禁用状态，作为实验保留，不计入已验证的完成效果。
-
-### 开发过程与限制
-
-项目开发时使用 Plastic SCM，首次 Git 提交是发布快照。[DEVELOPMENT.md](DEVELOPMENT.md) 按技术阶段解释开发过程，[changesets.json](docs/scm/changesets.json) 保存真实变更集信息，并去除账户与云服务标识。共享工程内的 FFT 海洋变更集没有纳入 Boids 归档，海洋部分已独立发布到 [FFT-Ocean-URP](https://github.com/supercoderrrrr/FFT-Ocean-URP)。
-
-邻居计算仍是 **O(N²)**。每个个体在自己的 `Update` 中读取和更新状态，尚未采用同帧快照。SphereCast 和边界转向属于预测方法，不能保证绝对不穿模或越界。当前实现中，把两个旋涡权重都设为零并不等同于禁用旋涡，应清空 `Vortex Center` 引用。
-
-录像采用固定模拟时间步，并以 15 fps 编码，播放帧率不代表运行性能。验证依据与限制见 [VALIDATION.md](docs/VALIDATION.md)，实现原理见 [ARCHITECTURE.md](docs/ARCHITECTURE.md)。
-
-### 参考与署名
-
-本项目在学习 [Craig Reynolds 的 Boids](https://www.red3d.com/cwr/boids/)、[Sebastian Lague 的教程](https://www.youtube.com/watch?v=bqtqltqcQhw) 和[参考实现](https://github.com/SebLague/Boids) 的过程中逐步完成，球面方向辅助类沿用了参考项目的采样思路。资源署名和许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+学习参考：[Craig Reynolds](https://www.red3d.com/cwr/boids/)、[Sebastian Lague 的教程](https://www.youtube.com/watch?v=bqtqltqcQhw)与[项目](https://github.com/SebLague/Boids)。第三方署名与许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

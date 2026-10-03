@@ -2,32 +2,20 @@
 
 ## English
 
-- Source workspace: the Boids learning project also contains an FFT ocean folder and FFT Renderer Feature
-- Public content: the six original runtime scripts, cleaned core comments, self-contained fullscreen distortion graph/material, sanitized Unity settings, generated public demo and publication utilities
-- Excluded: FFT code, FFT scene, FFT Renderer Feature, licensed art/plugins, imported textures of unverified provenance, embedded skyboxes, editor caches and workstation configuration
-- Removed from publication settings: Unity cloud project ID, organization ID and project name
-- SCM additions: the scene-referenced `SampleSceneProfile.asset` and its meta file were Private and are preserved in CS6
-- Dependency follow-up: Unity's scene dependency graph identified another 96 required Private items; CS7 preserves them in the existing SCM repository only
-- Post-check-in verification: none of the dependency paths selected by that audit remains Private
-- SCM cleanup: CS6 changes the three core scripts' comments only; executable token comparison passed
-- SCM metadata: preserve Boids CS0-CS4 and the actual publication check-in; exclude FFT CS5; omit owner email, server/organization identifiers and absolute workspace paths
-- Git identity: use the account's GitHub no-reply address for the new repository
-- History: initial Git commit is a current snapshot; no fabricated historical Git commits or dates
+The 2026-10-03 update publishes the new schooling runtime, URP presentation shaders, authored arch/cliff meshes, Blender source, reproducible public scene and current showcase media. `Assets/CinematicReef/Scenes/Boids.unity` is the only distributed scene. The older local scene is named `test` and remains outside this repository.
 
-The local source workspace has other pending FFT and third-party changes. A scoped Boids check-in does not claim to commit those unrelated changes. Raw Plastic client/workspace files and authentication configuration are never included in the public repository.
+Licensed fish and environment packages, their baked derivatives, imported textures of unverified provenance, FFT files, workstation configuration and editor caches are excluded. The public builder creates replacement fish, corals, outcrops and textures without copying those package files. Unity cloud project and organization identifiers remain empty in publication settings.
+
+The first Git commit imports the earlier publication snapshot. The latest update is a new Git commit with the actual publication date. Real Plastic SCM metadata remains preserved without owner emails, server names or absolute workspace paths. The previous CS6 comment-only audit is retained as historical evidence; later steering and camera fixes deliberately change executable behavior.
+
+Publication checks cover excluded dependencies, local Markdown links, text credential/path patterns, English comment style, scene count and file size. Unity checks and runtime evidence are recorded in [VALIDATION.md](VALIDATION.md). Showcase and public-scene results are identified separately because they use different art assets.
 
 ## 简体中文
 
-- 原始 Boids 学习工程同时包含 FFT 海洋目录和 Renderer Feature
-- 公开内容为原有六个运行脚本、核心英文注释、独立扰动图与材质、脱敏工程设置，以及生成的演示和发布工具
-- 排除 FFT、第三方美术与插件、来源未确认的贴图、内嵌天空包、本地缓存和工作站配置
-- 发布设置移除 Unity 云项目、组织和项目名称标识
-- `SampleSceneProfile.asset` 及其 `.meta` 原为 Private，CS6 已补充保存
-- 进一步按 Unity 场景依赖表查到 96 项必要 Private 文件，CS7 仅将它们补充到原 SCM 仓库
-- 提交后复核：本次依赖表选出的必要路径已没有 Private 项
-- CS6 对三个核心脚本只整理注释，可执行 token 对照通过
-- SCM 元数据保留 Boids CS0-CS4 与真实整理提交，排除 FFT CS5，去掉邮箱、云服务器和组织标识及本机绝对路径
-- 新 Git 仓库使用 GitHub no-reply 邮箱
-- 首次 Git 提交是当前版本快照，不补造旧的 Git 提交与日期
+2026-10-03 更新包含新版集群代码、URP 展示着色器、制作的拱门和岩壁、Blender 源文件、可重建的公开场景与新展示素材。仓库只分发 `Boids.unity`，本地旧 `test` 场景保留在原工程中。
 
-本地共享工程仍有 FFT 和第三方的其他待提交修改。本次限定范围的提交不宣称保存了那些无关改动。Plastic 客户端、工作区和认证原始文件不进入公开仓库。
+有许可限制的鱼和环境包、烘焙衍生网格、来源未确认的贴图、FFT 文件、本机配置和编辑器缓存均不公开。公开构建工具生成替代鱼、珊瑚、岩石与贴图，发布设置中的 Unity 云项目和组织标识保持为空。
+
+首次 Git 提交仍是早期发布快照，最新改进通过当前日期的真实 Git 提交记录。Plastic SCM 元数据保留，账户邮箱、服务器和本机路径去除。CS6 纯注释审查属于历史证据，后来的转向与相机修复确实修改了行为。
+
+发布检查覆盖资源依赖、Markdown 链接、凭据和本机路径模式、英文注释、场景数量与文件大小。Unity 及运行验证见 [VALIDATION.md](VALIDATION.md)，展示版与公开版的验证分开记录。

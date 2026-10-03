@@ -27,6 +27,11 @@ public class BoidAgent : MonoBehaviour
 
     void Update()
     {
+        if (manager == null)
+        {
+            return;
+        }
+
         Vector3 acceleration = Vector3.zero;
 
         CalculateFlockingForces(
@@ -309,6 +314,11 @@ public class BoidAgent : MonoBehaviour
 
     private Vector3 SteerTowards(Vector3 direction)
     {
+        if (direction.sqrMagnitude < 0.0001f)
+        {
+            return Vector3.zero;
+        }
+
         Vector3 desiredVelocity = direction.normalized * manager.MaxSpeed;
         Vector3 steeringForce = desiredVelocity - Velocity;
 

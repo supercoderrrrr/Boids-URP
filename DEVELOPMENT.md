@@ -8,7 +8,7 @@
 
 The project was developed in Unity Version Control / Plastic SCM before publication on GitHub. Its first Git commit imports the current Boids publication snapshot. Earlier work is documented by real Plastic changesets, not reconstructed or backdated Git commits.
 
-The original workspace also contains an FFT ocean implementation. This repository publishes only the Boids system, supporting camera/fog scripts and the self-contained distortion experiment. The FFT-specific CS5 is excluded from the Boids archive; it remains in the shared SCM repository.
+The original workspace also contains an FFT ocean implementation. This repository publishes the Boids system and its underwater presentation. The FFT-specific CS5 is excluded from the Boids archive; it remains in the shared SCM repository.
 
 ### Recorded Development
 
@@ -20,6 +20,7 @@ The original workspace also contains an FFT ocean implementation. This repositor
 | CS4 | 2026-08-05 | Caustics presentation in the original scene | Third-party caustics resources omitted from this public repository |
 | CS6 | 2026-10-02 | Preserve the missing Volume profile; normalize core comments to English; verify executable tokens are unchanged | [SCM history](docs/scm/HISTORY.md), [publication audit](docs/PUBLISH_AUDIT.md) |
 | CS7 | 2026-10-02 | Preserve 96 required Private scene dependency items in SCM after a Unity dependency audit; imported art stays out of public GitHub | [SCM history](docs/scm/HISTORY.md) |
+| Git update | 2026-10-03 | 3D spatial grid, shared simulation snapshots, corridor guidance, independent vortex, instanced fish and refreshed showcase media | [ReefSchool](Assets/CinematicReef/Scripts/ReefSchool.cs), [validation](docs/VALIDATION.md) |
 
 The brief historical comments are preserved verbatim in [HISTORY.md](docs/scm/HISTORY.md). The technical descriptions above also reference the current code; they should not be read as proof that every current detail existed in each historical revision. `changesets.json` contains repository-relative changed paths, comments and actual IDs. It is a metadata archive, not a full export of historical source revisions.
 
@@ -27,15 +28,23 @@ The brief historical comments are preserved verbatim in [HISTORY.md](docs/scm/HI
 
 The release copy separates Boids from FFT renderer dependencies, excludes third-party source assets and local caches, and removes Unity cloud project/organization identifiers. The original working scenes and FFT files are retained locally.
 
-A generated fish mesh, primitive obstacle scene, scene builder and command-line capture utility were added specifically for a runnable public demo. These publication additions are distinguishable from the original six runtime scripts and from earlier SCM changesets. Original scene recordings demonstrate the existing asset-based presentation; public demo recordings demonstrate the repository as distributed.
+A generated fish mesh, scene builder and command-line capture utility initially provided a runnable public demo. The latest update replaces that scene with `Boids`, sharing the new schooling runtime and routes while generating replacement assets for excluded licensed art. The older local scene is named `test`; it is not distributed in the current repository.
 
 Core comment cleanup removed obsolete commented-out experiments and retained short English explanations without trailing periods. A lexical check verified that non-comment executable tokens in the three edited original scripts were identical before and after cleanup. This is a style check, not an authorship classifier.
+
+### Schooling Update
+
+Neighbor queries now use a reusable 3D spatial grid, followed by exact distance filtering. Steering reads a shared snapshot before integration. A 30 Hz simulation and interpolated instanced draws separate simulation frequency from display refresh, with vertex tail animation replacing per-fish animation objects.
+
+Three schools follow closed corridors with individual offsets and speed variation. Staggered route-progress correction keeps the faster distant ribbon coherent. The fourth school uses tangential and radial vortex guidance with full-height startup population. Regression checks compare the three traveling schools with and without the vortex to verify isolation.
+
+The scene presentation was refined with a wider animated water surface, shadowed underwater light shafts and clearer particles. Showcase recordings and screenshots now use only the latest composition. The original scripts also gained a zero-direction steering guard, initialization safety and signed camera pitch/cursor cleanup fixes; these are behavioral changes after the earlier comment-only check-in.
 
 ### Validation and Next Steps
 
 The publication uses Unity 2022.3.62f2 / URP 14.0.12. Specific import, player-build, runtime and media checks are recorded in [VALIDATION.md](docs/VALIDATION.md), including any unresolved limitations.
 
-Future work: coherent path/flow intent, smooth boundary blending, frame snapshots, spatial hashing or Grid3D, and measured profiling across agent counts. None of those planned features is claimed as implemented here.
+Future work: measured scaling across agent counts, denser-school collision handling and Burst/Jobs or GPU simulation. The grid, snapshots and corridor guidance described above are implemented; the remaining items are not claimed as complete.
 
 ---
 
@@ -45,7 +54,7 @@ Future work: coherent path/flow intent, smooth boundary blending, frame snapshot
 
 项目开发阶段使用 Unity Version Control / Plastic SCM，之后才发布到 GitHub。首次 Git 提交导入当前 Boids 发布快照。此前开发过程由真实 Plastic 变更集记录，没有重建或回填 Git 提交日期。
 
-原工程也包含 FFT 海洋实现。本仓库只发布 Boids、辅助相机与雾脚本，以及不依赖贴图资源的扰动实验。FFT 专属 CS5 未纳入 Boids 归档，仍保留在共享 SCM 仓库中。
+原工程也包含 FFT 海洋实现。本仓库发布 Boids 与水下展示部分。FFT 专属 CS5 未纳入 Boids 归档，仍保留在共享 SCM 仓库中。
 
 ### 已记录的开发过程
 
@@ -57,6 +66,7 @@ Future work: coherent path/flow intent, smooth boundary blending, frame snapshot
 | CS4 | 2026-08-05 | 原始场景的焦散展示 | 第三方焦散资源未随本仓库分发 |
 | CS6 | 2026-10-02 | 补充缺失的 Volume Profile、统一核心英文注释、验证可执行代码未改变 | [SCM 历史](docs/scm/HISTORY.md)、[发布审查](docs/PUBLISH_AUDIT.md) |
 | CS7 | 2026-10-02 | 按 Unity 依赖表补充 96 项必要 Private 场景依赖，仅保存到 SCM，第三方美术不进入公开 GitHub | [SCM 历史](docs/scm/HISTORY.md) |
+| Git 更新 | 2026-10-03 | 三维空间网格、统一模拟快照、通道引导、独立漩涡、实例化鱼群与新版展示素材 | [ReefSchool](Assets/CinematicReef/Scripts/ReefSchool.cs)、[验证](docs/VALIDATION.md) |
 
 历史原始日志保存在 [HISTORY.md](docs/scm/HISTORY.md)。上表同时参考了当前代码，不意味着每一项当前细节都已经存在于对应历史版本。`changesets.json` 保存真实编号、说明和仓库相对文件路径，属于元数据归档，不是历史源码的完整导出。
 
@@ -64,12 +74,20 @@ Future work: coherent path/flow intent, smooth boundary blending, frame snapshot
 
 发布副本分离 Boids 与 FFT Renderer 依赖，排除第三方源资源与本地缓存，并移除 Unity 云项目和组织标识。本地原场景和 FFT 文件保留。
 
-为了提供可独立运行的公开演示，本次添加了生成鱼网格、基础障碍场景、场景构建工具和命令行录制工具。这些内容属于发布整理，区别于原来的六个运行脚本与早期 SCM 提交。原场景录像展示已有资源场景，公开演示录像展示仓库实际分发的版本。
+初次发布时添加了生成鱼网格、场景构建与命令行录制工具。最新更新用正式 `Boids` 替换旧演示，公开版本复用新集群代码与路线，并为未公开的许可资源生成替代资产。本地旧场景改名为 `test`，当前 GitHub 不再分发旧场景。
 
 核心注释整理移除了过时的注释掉代码，保留简洁英文解释并去掉句末句号。词法对照确认三个原始脚本在整理前后具有相同的非注释可执行 token。这属于代码风格核验，不能用来判定代码作者或生成来源。
+
+### 集群更新
+
+邻居查询改用可复用三维空间网格，再按实际距离筛选；所有转向读取统一快照后才积分。30 Hz 模拟与实例化插值显示分离更新频率，摆尾由顶点着色器完成。
+
+三组鱼群沿闭合通道游动并保留偏移和速度差异，错开执行的路线进度校正让较快的远景群体保持流向。第四组使用切向与径向漩涡引导，开场已覆盖完整高度；回归检查对比流动鱼群单独运行和同时运行漩涡时的位置，验证它们相互独立。
+
+另外精修了场景，补充覆盖更广的动态水面、带阴影的水下丁达尔光与更清晰的粒子。截图与录像全部替换为新版本。原脚本也增加了零方向转向保护、初始化检查、相机初始角度与鼠标释放修复，这些是早期纯注释提交之后的行为改动。
 
 ### 验证与后续方向
 
 发布环境为 Unity 2022.3.62f2 / URP 14.0.12，导入、构建、运行和展示素材的具体核验见 [VALIDATION.md](docs/VALIDATION.md)，未验证的限制也在其中说明。
 
-后续方向包括路径与流向引导、平滑边界混合、同帧快照、空间哈希或 Grid3D，以及不同个体数量下的实测性能。本次不把这些计划写成已经完成的技术。
+后续方向包括不同个体数量下的实测性能、密集群体的碰撞处理，以及 Burst/Jobs 或 GPU 模拟。上述网格、快照与通道引导已经实现，其余方向尚未完成。

@@ -1,39 +1,11 @@
 {
-  "scanScope": "Public source and documentation, excluding generated caches and binary media",
+  "date": "2026-10-03",
+  "scanScope": "Public assets, source, documentation, packages and project settings; binary media excluded from text scan",
   "patternFindings": [],
-  "coreExecutableTokenCheck": "passed",
-  "media": [
-    {
-      "scene": "Public",
-      "frames": 150,
-      "resolution": [
-        1280,
-        720
-      ],
-      "frameDifference": 21.207,
-      "result": {
-        "frames": 150,
-        "simulationFps": 30,
-        "outputFps": 15,
-        "agents": 240,
-        "runtimeErrors": false
-      }
-    },
-    {
-      "scene": "Source",
-      "frames": 150,
-      "resolution": [
-        1280,
-        720
-      ],
-      "frameDifference": 50.604,
-      "result": {
-        "frames": 150,
-        "simulationFps": 30,
-        "outputFps": 15,
-        "agents": 400,
-        "runtimeErrors": false
-      }
-    }
-  ]
+  "distributedScenes": [
+    "Assets/CinematicReef/Scenes/Boids.unity"
+  ],
+  "showcaseRuntimeMatchesSource": true,
+  "filesChecked": 215,
+  "largestFileBytes": 8963394.0
 }

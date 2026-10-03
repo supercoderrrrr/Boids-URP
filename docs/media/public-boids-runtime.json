@@ -1,0 +1,47 @@
+{
+    "agents": 1775,
+    "frames": 900,
+    "intersectionsAt20Seconds": 0,
+    "archPassages": 211,
+    "averageSchoolCpuMs": 9.343504444444442,
+    "averageCandidateTests": 87710,
+    "maximumCorridorError": 7.488884925842285,
+    "vortexAgents": 960,
+    "startupVortexAgents": 960,
+    "startupVortexMinHeight": 4.011143684387207,
+    "startupVortexMaxHeight": 24.994415283203126,
+    "startupVortexAverageSpeed": 2.6244781017303469,
+    "vortexMinHeight": 3.0769524574279787,
+    "vortexMaxHeight": 25.80484390258789,
+    "vortexRotationDegreesPerSecond": 20.82077407836914,
+    "schools": [
+        {
+            "name": "VortexSchool",
+            "averageSpeed": 2.610351085662842,
+            "maximumGuidanceError": 1.449007511138916,
+            "geometricGuidanceDistanceAtEnd": 1.6062006950378419
+        },
+        {
+            "name": "ArchPassageSchool",
+            "averageSpeed": 2.696934461593628,
+            "maximumGuidanceError": 6.334984302520752,
+            "geometricGuidanceDistanceAtEnd": 3.597917318344116
+        },
+        {
+            "name": "ForegroundReefResidents",
+            "averageSpeed": 1.7950749397277833,
+            "maximumGuidanceError": 7.488884925842285,
+            "geometricGuidanceDistanceAtEnd": 2.4727535247802736
+        },
+        {
+            "name": "DistantFlowingRibbon",
+            "averageSpeed": 4.885046482086182,
+            "maximumGuidanceError": 3.2929816246032717,
+            "geometricGuidanceDistanceAtEnd": 2.0770044326782228
+        }
+    ],
+    "synchronousRenderMedianMs": 32.19020080566406,
+    "synchronousRender95thMs": 49.933799743652347,
+    "graphicsDevice": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "errors": []
+}
