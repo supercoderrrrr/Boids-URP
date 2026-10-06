@@ -14,7 +14,7 @@ Showcase source frames were captured on 2026-10-02 at 1600 × 900. Simulation ru
 
 The showcase contains licensed art, excluded from the public project. The public `Boids` scene shares its 1,775-agent runtime and routes but uses generated replacement assets. Its separately captured evidence is recorded in `public-boids-runtime.json` and `public-boids.png`.
 
-To capture the distributed scene, make a Windows Development Build and launch it with `-reefCapture <output-directory>`. `ReefCapture` temporarily disables manual camera input, records the opening and close-up views, measures simulation work, and exits. It does not save scene changes.
+To capture the distributed scene, make a Windows Development Build and launch it with `-boidsCapture <output-directory>`. `BoidsCapture` temporarily disables manual camera input, records the opening and close-up views, measures simulation work, and exits. It does not save scene changes.
 
 ## 简体中文
 
@@ -22,4 +22,4 @@ To capture the distributed scene, make a Windows Development Build and launch it
 
 展示素材于 2026-10-02 直接从 Unity 相机采集，分辨率为 1600 × 900，以 30 Hz 模拟、每两步记录一帧，MP4 播放为 15 fps，GIF 为缩小预览。没有额外生成画面或在 Unity 之外重新调色，录制帧率不等同于实测运行 FPS。
 
-展示版包含未公开的许可资源。公开 `Boids` 使用生成替代资源，并复用相同的 1775 条鱼与路线，单独运行的验证保存在 `public-boids-runtime.json` 与 `public-boids.png`。开发构建可用 `-reefCapture <输出目录>` 重复录制。
+展示版包含未公开的许可资源。公开 `Boids` 使用生成替代资源，并复用相同的 1775 条鱼与路线，单独运行的验证保存在 `public-boids-runtime.json` 与 `public-boids.png`。开发构建可用 `-boidsCapture <输出目录>` 重复录制。

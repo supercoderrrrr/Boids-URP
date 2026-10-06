@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace CinematicReef
+namespace BoidsUnderwaterScene
 {
-    public sealed class ReefSpatialGrid
+    public sealed class BoidsSpatialGrid
     {
         private readonly Dictionary<Vector3Int, int> heads;
         private readonly int[] next;
         private readonly float inverseCell;
-        public ReefSpatialGrid(int capacity, float cellSize)
+        public BoidsSpatialGrid(int capacity, float cellSize)
         {
             heads = new Dictionary<Vector3Int, int>(capacity);
             next = new int[capacity];
@@ -31,7 +31,7 @@ namespace CinematicReef
         public int Next(int index) => next[index];
     }
 
-    public sealed class ReefSchool : MonoBehaviour
+    public sealed class BoidsSchool : MonoBehaviour
     {
         [Header("Rendering")]
         [SerializeField] private Mesh fishMesh;
@@ -71,7 +71,7 @@ namespace CinematicReef
         private float length, accumulator;
         private float gridCellSize;
         private int tick;
-        private ReefSpatialGrid grid;
+        private BoidsSpatialGrid grid;
         private readonly System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
         public int AgentCount => positions == null ? 0 : positions.Length;
         public long CandidateTests { get; private set; }
@@ -116,7 +116,7 @@ namespace CinematicReef
             vortexPhases = new float[count];
             rotations = new Quaternion[count]; matrices = new Matrix4x4[count];
             gridCellSize = Mathf.Max(perceptionRadius, separationRadius);
-            grid = new ReefSpatialGrid(count, gridCellSize);
+            grid = new BoidsSpatialGrid(count, gridCellSize);
             tick = 0; accumulator = 0f; ArchPassages = 0;
             var random = new System.Random(seed);
             for (int i = 0; i < positions.Length; i++)
@@ -255,7 +255,7 @@ namespace CinematicReef
         {
             watch.Restart();
             float requestedCellSize = Mathf.Max(perceptionRadius, separationRadius, .01f);
-            if (!Mathf.Approximately(requestedCellSize, gridCellSize)) { gridCellSize = requestedCellSize; grid = new ReefSpatialGrid(positions.Length, gridCellSize); }
+            if (!Mathf.Approximately(requestedCellSize, gridCellSize)) { gridCellSize = requestedCellSize; grid = new BoidsSpatialGrid(positions.Length, gridCellSize); }
             grid.Rebuild(positions); CandidateTests = 0; ObstacleQueries = 0; MaximumCorridorError = 0;
             float perceptionSqr = perceptionRadius * perceptionRadius, separationSqr = separationRadius * separationRadius;
             for (int i = 0; i < positions.Length; i++)

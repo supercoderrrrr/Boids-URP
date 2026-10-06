@@ -1,4 +1,4 @@
-Shader "Cinematic Reef/Water Surface"
+Shader "BoidsUnderwaterScene/WaterSurface"
 {
     Properties
     {
@@ -17,7 +17,7 @@ Shader "Cinematic Reef/Water Surface"
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            #include "ReefCommon.hlsl"
+            #include "UnderwaterCommon.hlsl"
             TEXTURE2D(_NormalMap); SAMPLER(sampler_NormalMap);
             CBUFFER_START(UnityPerMaterial)
             float _WaveHeight;
@@ -39,7 +39,7 @@ Shader "Cinematic Reef/Water Surface"
                 float3 v = normalize(_WorldSpaceCameraPos - i.positionWS);
                 float cosine = abs(dot(n,v));
                 float tir = 1 - smoothstep(.63, .79, cosine);
-                float patterns = ReefCaustics(i.positionWS.xz * .45, _Time.y);
+                float patterns = UnderwaterCaustics(i.positionWS.xz * .45, _Time.y);
                 float3 sky = lerp(float3(.16,.39,.44),float3(.56,.78,.75), cosine);
                 float3 internalReflection = float3(.018,.10,.115) * (1.0 + (n1.x+n2.y)*.32) + patterns * float3(.002,.008,.009);
                 float3 color = lerp(sky, internalReflection, tir * .92);

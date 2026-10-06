@@ -5,37 +5,37 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace CinematicReef
+namespace BoidsUnderwaterScene
 {
-    public sealed class ReefCapture : MonoBehaviour
+    public sealed class BoidsCapture : MonoBehaviour
     {
         private string output;
         private readonly List<string> errors=new List<string>();
         private Camera view;
         private RenderTexture target;
         private Texture2D readback;
-        private ReefSchool[] schools;
+        private BoidsSchool[] schools;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            string[] args=Environment.GetCommandLineArgs();int index=Array.IndexOf(args,"-reefCapture");
+            string[] args=Environment.GetCommandLineArgs();int index=Array.IndexOf(args,"-boidsCapture");
             if(index<0||index+1>=args.Length)return;
-            var component=new GameObject("ReefCaptureValidation").AddComponent<ReefCapture>();component.output=args[index+1];
+            var component=new GameObject("BoidsCaptureValidation").AddComponent<BoidsCapture>();component.output=args[index+1];
         }
         private void OnEnable()=>Application.logMessageReceived+=Log;
         private void OnDisable()=>Application.logMessageReceived-=Log;
         private void Log(string message,string trace,LogType type){if(type==LogType.Error||type==LogType.Exception)errors.Add(message);}
         private IEnumerator Start()
         {
-            Directory.CreateDirectory(output);view=Camera.main;schools=FindObjectsOfType<ReefSchool>();
-            view.GetComponent<ReefCamera>().enabled=false;
+            Directory.CreateDirectory(output);view=Camera.main;schools=FindObjectsOfType<BoidsSchool>();
+            view.GetComponent<UnderwaterCameraController>().enabled=false;
             Application.runInBackground=true;QualitySettings.vSyncCount=0;Application.targetFrameRate=-1;
             Time.captureFramerate=30;
             target=new RenderTexture(1600,900,24,RenderTextureFormat.ARGB32);target.Create();
             readback=new Texture2D(1600,900,TextureFormat.RGB24,false);
             double sum=0;long candidates=0;float maxError=0;int steps=900,penetrations=0;
             var schoolErrors=new float[schools.Length];
-            var vortexStart=new Dictionary<ReefSchool,Vector3[]>();
+            var vortexStart=new Dictionary<BoidsSchool,Vector3[]>();
             float vortexTurn=0;int vortexSamples=0;
             int initialCount=0;
             float initialLow=float.PositiveInfinity,initialHigh=float.NegativeInfinity,initialSpeed=0;

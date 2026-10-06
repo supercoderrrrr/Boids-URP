@@ -20,7 +20,7 @@ The original workspace also contains an FFT ocean implementation. This repositor
 | CS4 | 2026-08-05 | Caustics presentation in the original scene | Third-party caustics resources omitted from this public repository |
 | CS6 | 2026-10-02 | Preserve the missing Volume profile; normalize core comments to English; verify executable tokens are unchanged | [SCM history](docs/scm/HISTORY.md), [publication audit](docs/PUBLISH_AUDIT.md) |
 | CS7 | 2026-10-02 | Preserve 96 required Private scene dependency items in SCM after a Unity dependency audit; imported art stays out of public GitHub | [SCM history](docs/scm/HISTORY.md) |
-| Git update | 2026-10-03 | 3D spatial grid, shared simulation snapshots, corridor guidance, independent vortex, instanced fish and refreshed showcase media | [ReefSchool](Assets/CinematicReef/Scripts/ReefSchool.cs), [validation](docs/VALIDATION.md) |
+| Git update | 2026-10-03 | 3D spatial grid, shared simulation snapshots, corridor guidance, independent vortex, instanced fish and refreshed showcase media | [BoidsSchool](Assets/BoidsUnderwaterScene/Scripts/BoidsSchool.cs), [validation](docs/VALIDATION.md) |
 
 The brief historical comments are preserved verbatim in [HISTORY.md](docs/scm/HISTORY.md). The technical descriptions above also reference the current code; they should not be read as proof that every current detail existed in each historical revision. `changesets.json` contains repository-relative changed paths, comments and actual IDs. It is a metadata archive, not a full export of historical source revisions.
 
@@ -66,7 +66,7 @@ Future work: measured scaling across agent counts, denser-school collision handl
 | CS4 | 2026-08-05 | 原始场景的焦散展示 | 第三方焦散资源未随本仓库分发 |
 | CS6 | 2026-10-02 | 补充缺失的 Volume Profile、统一核心英文注释、验证可执行代码未改变 | [SCM 历史](docs/scm/HISTORY.md)、[发布审查](docs/PUBLISH_AUDIT.md) |
 | CS7 | 2026-10-02 | 按 Unity 依赖表补充 96 项必要 Private 场景依赖，仅保存到 SCM，第三方美术不进入公开 GitHub | [SCM 历史](docs/scm/HISTORY.md) |
-| Git 更新 | 2026-10-03 | 三维空间网格、统一模拟快照、通道引导、独立漩涡、实例化鱼群与新版展示素材 | [ReefSchool](Assets/CinematicReef/Scripts/ReefSchool.cs)、[验证](docs/VALIDATION.md) |
+| Git 更新 | 2026-10-03 | 三维空间网格、统一模拟快照、通道引导、独立漩涡、实例化鱼群与新版展示素材 | [BoidsSchool](Assets/BoidsUnderwaterScene/Scripts/BoidsSchool.cs)、[验证](docs/VALIDATION.md) |
 
 历史原始日志保存在 [HISTORY.md](docs/scm/HISTORY.md)。上表同时参考了当前代码，不意味着每一项当前细节都已经存在于对应历史版本。`changesets.json` 保存真实编号、说明和仓库相对文件路径，属于元数据归档，不是历史源码的完整导出。
 

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cinematic Reef/Living Surface
+  m_Name: CoralPublicCoral
   m_Shader: {fileID: 4800000, guid: 3163e693020da544f89a075067fb31b5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -36,13 +36,13 @@ Material:
     - _Algae: 0
     - _Cull: 2
     - _Desaturation: 0
-    - _Fish: 1
+    - _Fish: 0
     - _NormalStrength: 0.75
     - _SandRipples: 0
-    - _Smoothness: 0.7
+    - _Smoothness: 0.18
     - _Sway: 0
     - _Tile: 0.22
     - _Triplanar: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.86, g: 0.84, b: 0.78, a: 1}
   m_BuildTextureStacks: []

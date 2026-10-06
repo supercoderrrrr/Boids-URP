@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace CinematicReef.Editor
+namespace BoidsUnderwaterScene.Editor
 {
-    public static class ReefDemoAssets
+    public static class BoidsSceneAssets
     {
-        private const string Generated = ReefSceneBuilder.Root + "/Generated";
+        private const string Generated = BoidsUnderwaterSceneBuilder.Root + "/Generated";
 
         public static Texture2D Texture(string filename)
         {
@@ -71,7 +71,7 @@ namespace CinematicReef.Editor
             var material = AssetDatabase.LoadAssetAtPath<Material>(Generated + "/PublicCoral.mat");
             if (material == null)
             {
-                material = new Material(Shader.Find("Cinematic Reef/Living Surface")) { name = "PublicCoral", enableInstancing = true };
+                material = new Material(Shader.Find("BoidsUnderwaterScene/EnvironmentLit")) { name = "PublicCoral", enableInstancing = true };
                 material.SetColor("_BaseColor", new Color(.7f, .72f, .5f)); material.SetFloat("_Algae", 0);
                 AssetDatabase.CreateAsset(material, Generated + "/PublicCoral.mat");
             }

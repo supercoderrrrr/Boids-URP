@@ -4,9 +4,9 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace CinematicReef.Editor
+namespace BoidsUnderwaterScene.Editor
 {
-    public static class ReefValidation
+    public static class BoidsSceneValidation
     {
         [MenuItem("Tools/Boids/Validate Boids")]
         public static void Validate()
@@ -21,7 +21,7 @@ namespace CinematicReef.Editor
                     bool foreground=transform.name.StartsWith("ForegroundCoral");
                     if(!foreground&&!transform.name.StartsWith("BackgroundCoral"))continue;
                     if(foreground)foregroundCorals++;else backgroundCorals++;
-                    var points=ReefSceneBuilder.CoralBasePoints(transform.gameObject);
+                    var points=BoidsUnderwaterSceneBuilder.CoralBasePoints(transform.gameObject);
                     float nearest=float.PositiveInfinity;
                     foreach(var point in points)
                         if(Physics.Raycast(point+Vector3.up*.15f,Vector3.down,out var hit,5,1<<6,QueryTriggerInteraction.Ignore))nearest=Mathf.Min(nearest,Mathf.Abs(point.y-hit.point.y));
@@ -31,7 +31,7 @@ namespace CinematicReef.Editor
             foreach(var renderer in UnityEngine.Object.FindObjectsOfType<Renderer>())
                 foreach(var material in renderer.sharedMaterials)
                     if(material==null||material.shader==null||material.shader.name=="Hidden/InternalErrorShader")issues.Add("Missing material "+renderer.name);
-            foreach(string guid in AssetDatabase.FindAssets("t:Shader",new[]{ReefSceneBuilder.Root}))
+            foreach(string guid in AssetDatabase.FindAssets("t:Shader",new[]{BoidsUnderwaterSceneBuilder.Root}))
             {
                 var shader=AssetDatabase.LoadAssetAtPath<Shader>(AssetDatabase.GUIDToAssetPath(guid));
                 foreach(var message in ShaderUtil.GetShaderMessages(shader))
@@ -42,16 +42,16 @@ namespace CinematicReef.Editor
             ValidateSchoolIsolation();
             Physics.SyncTransforms();
             int blocked=0,total=0;
-            foreach(var school in UnityEngine.Object.FindObjectsOfType<ReefSchool>())
+            foreach(var school in UnityEngine.Object.FindObjectsOfType<BoidsSchool>())
             {
                 int localBlocked=0;
                 foreach(var p in school.SampleRouteForValidation())
                 {
                     total++;if(float.IsNaN(p.x)||float.IsInfinity(p.y))issues.Add("Non-finite path "+school.name);
                     var overlap=Physics.OverlapSphere(p,.45f,1<<6,QueryTriggerInteraction.Ignore);
-                    if(overlap.Length>0){blocked++;localBlocked++;if(localBlocked<=6)Debug.Log("REEF_ROUTE_BLOCKED "+school.name+" p="+p+" collider="+overlap[0].name);}
+                    if(overlap.Length>0){blocked++;localBlocked++;if(localBlocked<=6)Debug.Log("BOIDS_ROUTE_BLOCKED "+school.name+" p="+p+" collider="+overlap[0].name);}
                 }
-                Debug.Log("REEF_ROUTE "+school.name+" blockedSamples="+localBlocked);
+                Debug.Log("BOIDS_ROUTE "+school.name+" blockedSamples="+localBlocked);
             }
             if(blocked>0)issues.Add("One or more swim route samples intersect an obstacle");
             if(foregroundCorals<32||foregroundCorals>48)issues.Add("Unexpected foreground colony count "+foregroundCorals);
@@ -60,14 +60,14 @@ namespace CinematicReef.Editor
             Directory.CreateDirectory("docs");
             File.WriteAllText("docs/boids-editor-validation.json",JsonUtility.ToJson(report,true));
             if(issues.Count>0)throw new InvalidOperationException(string.Join("\n",issues));
-            Debug.Log("REEF_VALIDATION_PASSED grid=exact blockedRouteSamples="+blocked);
+            Debug.Log("BOIDS_VALIDATION_PASSED grid=exact blockedRouteSamples="+blocked);
         }
         private static void ValidateGrid()
         {
             var random=new System.Random(2026);var positions=new Vector3[257];
             for(int i=0;i<positions.Length;i++)positions[i]=new Vector3((float)random.NextDouble()*30-15,(float)random.NextDouble()*20-10,(float)random.NextDouble()*30-15);
             positions[0]=new Vector3(-3.2f,0,0);positions[1]=new Vector3(-.00001f,0,0);positions[2]=new Vector3(3.2f,0,0);
-            var grid=new ReefSpatialGrid(positions.Length,3.2f);grid.Rebuild(positions);
+            var grid=new BoidsSpatialGrid(positions.Length,3.2f);grid.Rebuild(positions);
             for(int i=0;i<positions.Length;i++)
             {
                 var found=new HashSet<int>();Vector3Int cell=grid.Cell(positions[i]);
@@ -98,9 +98,9 @@ namespace CinematicReef.Editor
 
         private static void ValidateSchoolIsolation()
         {
-            var schools=UnityEngine.Object.FindObjectsOfType<ReefSchool>();
+            var schools=UnityEngine.Object.FindObjectsOfType<BoidsSchool>();
             var materials=new HashSet<UnityEngine.Object>();
-            ReefSchool sourceVortex=null;
+            BoidsSchool sourceVortex=null;
             foreach(var school in schools)
             {
                 var so=new SerializedObject(school);
@@ -114,8 +114,8 @@ namespace CinematicReef.Editor
             float expectedHeight=vortexSettings.FindProperty("vortexHeight").floatValue;
             float expectedSpeed=vortexSettings.FindProperty("cruiseSpeed").floatValue;
             var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
-            var initialize=typeof(ReefSchool).GetMethod("OnEnable",flags);
-            var simulate=typeof(ReefSchool).GetMethod("Simulate",flags);
+            var initialize=typeof(BoidsSchool).GetMethod("OnEnable",flags);
+            var simulate=typeof(BoidsSchool).GetMethod("Simulate",flags);
             var vortex=UnityEngine.Object.Instantiate(sourceVortex);
             vortex.enabled=false;initialize.Invoke(vortex,null);
             try
@@ -154,7 +154,7 @@ namespace CinematicReef.Editor
                 }
             }
             finally{UnityEngine.Object.DestroyImmediate(vortex.gameObject);}
-            Debug.Log("REEF_SCHOOL_ISOLATION_PASSED startupAgents="+expectedCount+" comparedSteps=60");
+            Debug.Log("BOIDS_SCHOOL_ISOLATION_PASSED startupAgents="+expectedCount+" comparedSteps=60");
         }
         [Serializable] private sealed class Report
         {

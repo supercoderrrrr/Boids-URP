@@ -10,7 +10,7 @@ public static class BoidsPublicationValidation
 {
     public static void Validate()
     {
-        var scene = EditorSceneManager.OpenScene(CinematicReef.Editor.ReefSceneBuilder.ScenePath);
+        var scene = EditorSceneManager.OpenScene(BoidsUnderwaterScene.Editor.BoidsUnderwaterSceneBuilder.ScenePath);
         var errors = new List<string>();
         foreach (var root in scene.GetRootGameObjects())
         {
@@ -22,7 +22,7 @@ public static class BoidsPublicationValidation
                     if (material == null || material.shader == null || ShaderUtil.ShaderHasError(material.shader))
                         errors.Add("Missing or invalid material on " + renderer.name);
         }
-        var schools = UnityEngine.Object.FindObjectsOfType<CinematicReef.ReefSchool>();
+        var schools = UnityEngine.Object.FindObjectsOfType<BoidsUnderwaterScene.BoidsSchool>();
         if (schools.Length != 4) errors.Add("Expected four independent schools");
         foreach (var school in schools)
         {

@@ -3,7 +3,7 @@
   "scanScope": "Public assets, source, documentation, packages and project settings; binary media excluded from text scan",
   "patternFindings": [],
   "distributedScenes": [
-    "Assets/CinematicReef/Scenes/Boids.unity"
+    "Assets/BoidsUnderwaterScene/Scenes/Boids.unity"
   ],
   "showcaseRuntimeMatchesSource": true,
   "filesChecked": 215,

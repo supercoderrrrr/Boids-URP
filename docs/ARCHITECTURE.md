@@ -2,11 +2,11 @@
 
 ## English
 
-`ReefSchool` owns the positions, previous positions, velocities, next velocities, route progress and rendering matrices for one school. There is no shared neighbor list between schools. Four instances provide the arch passage, distant ribbon, foreground residents and vortex.
+`BoidsSchool` owns the positions, previous positions, velocities, next velocities, route progress and rendering matrices for one school. There is no shared neighbor list between schools. Four instances provide the arch passage, distant ribbon, foreground residents and vortex.
 
 ### Neighbor Queries and Integration
 
-`ReefSpatialGrid` maps `floor(position / cellSize)` to the head of an index chain. A reusable `next` array stores the remaining indices in each cell. Cell size is the larger of perception and separation radii, so a 3 × 3 × 3 query covers the required neighborhood. Negative coordinates use floor rather than truncation.
+`BoidsSpatialGrid` maps `floor(position / cellSize)` to the head of an index chain. A reusable `next` array stores the remaining indices in each cell. Cell size is the larger of perception and separation radii, so a 3 × 3 × 3 query covers the required neighborhood. Negative coordinates use floor rather than truncation.
 
 Each simulation step rebuilds the grid from the current positions. All agents read these positions and velocities, accumulate steering into `nextVelocities`, and only then integrate their state. Separation adds an inverse-distance contribution, alignment compares the mean neighboring velocity with the current velocity, and cohesion pulls toward the local average position. Final acceleration and speed are bounded.
 
@@ -26,13 +26,13 @@ Each agent refreshes its cached avoidance response once every five ticks. A forw
 
 Simulation uses a 1/30-second step, with bounded catch-up work. Rendering interpolates between previous and current positions and smooths orientation. Each school submits a single `Graphics.DrawMeshInstanced` call, capped at 1,023 agents; the four authored schools need four fish draws per camera. Vertex deformation animates the tails without per-fish GameObjects or Animators. These draw counts do not include environment objects or particles.
 
-The original `BoidAgent`, `BoidManager` and `BoidHelper` remain as earlier learning-stage code. The `Boids` scene uses `ReefSchool`. Legacy regression checks cover the zero-direction steering guard and signed initial camera pitch.
+The original `BoidAgent`, `BoidManager` and `BoidHelper` remain as earlier learning-stage code. The `Boids` scene uses `BoidsSchool`. Legacy regression checks cover the zero-direction steering guard and signed initial camera pitch.
 
-The public builder substitutes generated geometry and textures when licensed packages are absent. Showcase assets and public assets therefore differ, while the schooling runtime and authored routes are shared. Capture code activates only in the Editor or a Development Build with `-reefCapture`.
+The public builder substitutes generated geometry and textures when licensed packages are absent. Showcase assets and public assets therefore differ, while the schooling runtime and authored routes are shared. Capture code activates only in the Editor or a Development Build with `-boidsCapture`.
 
 ## 简体中文
 
-`ReefSchool` 独立管理一组鱼的位置、上一帧位置、速度、下一步速度、路线进度和绘制矩阵。四组分别负责拱门通道、远景巡游、前景活动与漩涡，各组不会共享邻居或转向力。
+`BoidsSchool` 独立管理一组鱼的位置、上一帧位置、速度、下一步速度、路线进度和绘制矩阵。四组分别负责拱门通道、远景巡游、前景活动与漩涡，各组不会共享邻居或转向力。
 
 空间网格把 `floor(position / cellSize)` 映射到单元格链表头，复用 `next` 数组记录同格个体。单元格尺寸取感知与分离半径的较大值，因此检查当前格与周围 26 格即可覆盖邻居范围。负坐标使用向下取整。
 
@@ -46,4 +46,4 @@ The public builder substitutes generated geometry and textures when licensed pac
 
 模拟以 30 Hz 更新并限制追帧次数，绘制对位置插值、对朝向平滑。每组通过一次实例化绘制提交最多 1023 条鱼，当前四组每个相机需要四次鱼群绘制；环境与粒子另计。摆尾由顶点着色器完成，没有逐鱼 GameObject 或 Animator。
 
-原来的 Agent/Manager 脚本保留为学习阶段代码，正式 `Boids` 场景使用 `ReefSchool`。公开构建工具会生成替代鱼与环境资源，展示与公开版的资源不同，但使用相同集群逻辑和路线。录制工具通过 `-reefCapture` 显式启用。
+原来的 Agent/Manager 脚本保留为学习阶段代码，正式 `Boids` 场景使用 `BoidsSchool`。公开构建工具会生成替代鱼与环境资源，展示与公开版的资源不同，但使用相同集群逻辑和路线。录制工具通过 `-boidsCapture` 显式启用。

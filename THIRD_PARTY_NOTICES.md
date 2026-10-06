@@ -41,7 +41,7 @@ Further algorithm references: [Craig Reynolds](https://www.red3d.com/cwr/boids/)
 | Skyboxes package | Staggart Creations | Embedded package and its source art omitted |
 | Imported water/noise/caustic textures | Source provenance not verified in the local files | Omitted |
 
-The public `Boids` scene uses `ReefDemoAssets` to generate fish, outcrops, branching corals and textures instead of redistributing those resources. The authored arch and stratified cliff meshes and their Blender source are included. A mesh baked from the licensed fish model is still a derivative of that model and is excluded along with its textures.
+The public `Boids` scene uses `BoidsSceneAssets` to generate fish, outcrops, branching corals and textures instead of redistributing those resources. The authored arch and stratified cliff meshes and their Blender source are included. A mesh baked from the licensed fish model is still a derivative of that model and is excluded along with its textures.
 
 The latest scene uses the included URP shaders for surface animation, underwater absorption, scattering, shadowed light shafts and procedural caustics. The earlier scene integrated a third-party caustics plugin, whose source remains excluded.
 
@@ -53,7 +53,7 @@ Unity packages resolve through Package Manager and retain their own licenses. Th
 
 Boids 转向与避障方向设计参考了 Sebastian Lague 的教程与项目，球面采样辅助类沿用了其实现思路，因此保留上方 MIT 许可。局部集群规则的原始参考为 Craig Reynolds。
 
-展示场景的鱼与部分环境资源属于第三方内容，源文件不随公开仓库上传，从鱼模型烘焙的网格也不分发。公开 `Boids` 用 `ReefDemoAssets` 生成替代鱼、岩石、珊瑚与贴图，同时包含制作的拱门、分层岩壁和 Blender 源文件。
+展示场景的鱼与部分环境资源属于第三方内容，源文件不随公开仓库上传，从鱼模型烘焙的网格也不分发。公开 `Boids` 用 `BoidsSceneAssets` 生成替代鱼、岩石、珊瑚与贴图，同时包含制作的拱门、分层岩壁和 Blender 源文件。
 
 新版水面动画、吸收、散射、带阴影光束与程序焦散使用仓库内的 URP 着色器。早期场景使用的第三方焦散插件仍未公开。
 

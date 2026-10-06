@@ -1,6 +1,6 @@
-#ifndef CINEMATIC_REEF_COMMON
-#define CINEMATIC_REEF_COMMON
-float ReefCaustics(float2 p, float time)
+#ifndef BOIDS_UNDERWATER_COMMON
+#define BOIDS_UNDERWATER_COMMON
+float UnderwaterCaustics(float2 p, float time)
 {
     float2 q = p * 1.1;
     q += float2(sin(q.y * .67 + time * .27), cos(q.x * .51 - time * .23)) * .72;

@@ -1,4 +1,4 @@
-Shader "Cinematic Reef/Underwater"
+Shader "BoidsUnderwaterScene/Underwater"
 {
     SubShader
     {
@@ -9,14 +9,14 @@ Shader "Cinematic Reef/Underwater"
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
         #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
-        #include "ReefCommon.hlsl"
-        TEXTURE2D_X(_ReefScattering);
-        float4 _ReefScattering_TexelSize;
-        float _ReefSurfaceHeight;
-        float3 _ReefAbsorption;
-        float4 _ReefFogTint;
-        float _ReefFogDensity,_ReefShaftIntensity,_ReefDistortion;
-        float _ReefChromaticPixels;
+        #include "UnderwaterCommon.hlsl"
+        TEXTURE2D_X(_UnderwaterScattering);
+        float4 _UnderwaterScattering_TexelSize;
+        float _UnderwaterSurfaceHeight;
+        float3 _UnderwaterAbsorption;
+        float4 _UnderwaterFogTint;
+        float _UnderwaterFogDensity,_UnderwaterShaftIntensity,_UnderwaterDistortion;
+        float _UnderwaterChromaticPixels;
         float3 Position(float2 uv)
         {
             float depth = SampleSceneDepth(uv);
@@ -30,7 +30,7 @@ Shader "Cinematic Reef/Underwater"
             float3 v = p - _WorldSpaceCameraPos;
             float len = min(length(v), 140.0);
             float up = v.y / max(length(v), .001);
-            if (up > .001) len = min(len, max(0, _ReefSurfaceHeight - _WorldSpaceCameraPos.y) / up);
+            if (up > .001) len = min(len, max(0, _UnderwaterSurfaceHeight - _WorldSpaceCameraPos.y) / up);
             return len;
         }
         half4 Scatter(Varyings input) : SV_Target
@@ -47,14 +47,14 @@ Shader "Cinematic Reef/Underwater"
                 float d = (i + jitter) * stepLength;
                 float3 samplePosition = _WorldSpaceCameraPos + ray * d;
                 float shadow = MainLightRealtimeShadow(TransformWorldToShadowCoord(samplePosition));
-                float surfaceLight = exp(-max(0, _ReefSurfaceHeight - samplePosition.y) * .024);
-                float2 entry=samplePosition.xz+sun.direction.xz/max(sun.direction.y,.15)*max(0,_ReefSurfaceHeight-samplePosition.y);
+                float surfaceLight = exp(-max(0, _UnderwaterSurfaceHeight - samplePosition.y) * .024);
+                float2 entry=samplePosition.xz+sun.direction.xz/max(sun.direction.y,.15)*max(0,_UnderwaterSurfaceHeight-samplePosition.y);
                 float aperture=sin(entry.x*.73+sin(entry.y*.31+_Time.y*.09)*1.5)*.5+.5;
                 float mottling = .10 + 1.25 * pow(aperture,6);
                 integral += shadow * surfaceLight * mottling * exp(-d * .023) * stepLength;
             }
             float phase = .3 + .7 * pow(saturate(dot(ray, sun.direction) * .5 + .5), 6);
-            return half4(sun.color * float3(.42, .75, .69) * integral * _ReefShaftIntensity * phase, min(length(p - _WorldSpaceCameraPos), 140));
+            return half4(sun.color * float3(.42, .75, .69) * integral * _UnderwaterShaftIntensity * phase, min(length(p - _WorldSpaceCameraPos), 140));
         }
         half4 Composite(Varyings input) : SV_Target
         {
@@ -64,21 +64,21 @@ Shader "Cinematic Reef/Underwater"
             float depth = min(length(p - _WorldSpaceCameraPos), 140);
             float edge = saturate(min(min(uv.x, 1-uv.x), min(uv.y, 1-uv.y)) * 30);
             float2 flow = float2(sin(uv.y * 15 + _Time.y * .31), sin(uv.x * 13 - _Time.y * .27));
-            float2 displaced = uv + flow * _ReefDistortion * edge * saturate(distanceInWater / 15);
+            float2 displaced = uv + flow * _UnderwaterDistortion * edge * saturate(distanceInWater / 15);
             half3 source = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, displaced).rgb;
             // Pixel-sized channel offsets stay subtle across render resolutions
             float2 radial = (uv - .5) * 2;
-            float2 chromatic = radial * dot(radial,radial) / _ScaledScreenParams.xy * _ReefChromaticPixels;
+            float2 chromatic = radial * dot(radial,radial) / _ScaledScreenParams.xy * _UnderwaterChromaticPixels;
             source.r = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, displaced + chromatic).r;
             source.b = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, displaced - chromatic).b;
-            float3 transmission = exp(-_ReefAbsorption * distanceInWater);
-            float3 scatterColor = _ReefFogTint.rgb;
-            float scatter = 1 - exp(-distanceInWater * _ReefFogDensity);
+            float3 transmission = exp(-_UnderwaterAbsorption * distanceInWater);
+            float3 scatterColor = _UnderwaterFogTint.rgb;
+            float scatter = 1 - exp(-distanceInWater * _UnderwaterFogDensity);
             float3 volume = 0; float total = 0;
             [unroll] for (int k=0; k<4; k++)
             {
                 float2 offset = float2(k % 2, k / 2) - .5;
-                float4 sample = SAMPLE_TEXTURE2D_X(_ReefScattering, sampler_LinearClamp, uv + offset * _ReefScattering_TexelSize.xy);
+                float4 sample = SAMPLE_TEXTURE2D_X(_UnderwaterScattering, sampler_LinearClamp, uv + offset * _UnderwaterScattering_TexelSize.xy);
                 float weight = 1.0 / (1.0 + abs(sample.a - depth) * 2.0);
                 volume += sample.rgb * weight; total += weight;
             }

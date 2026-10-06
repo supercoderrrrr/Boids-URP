@@ -1,4 +1,4 @@
-Shader "Cinematic Reef/Suspended Particles"
+Shader "BoidsUnderwaterScene/UnderwaterParticles"
 {
     Properties { _BaseColor("Color",Color)=(.55,.8,.8,.18) _Ring("Bubble ring",Float)=0 }
     SubShader

@@ -1,4 +1,4 @@
-Shader "Cinematic Reef/Living Surface"
+Shader "BoidsUnderwaterScene/EnvironmentLit"
 {
     Properties
     {
@@ -22,10 +22,10 @@ Shader "Cinematic Reef/Living Surface"
         HLSLINCLUDE
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-        #include "ReefCommon.hlsl"
+        #include "UnderwaterCommon.hlsl"
         TEXTURE2D(_BaseMap); SAMPLER(sampler_BaseMap);
         TEXTURE2D(_BumpMap); SAMPLER(sampler_BumpMap);
-        float _ReefCaustics;
+        float _UnderwaterCaustics;
         CBUFFER_START(UnityPerMaterial)
         float4 _BaseColor;
         float _Tile, _Triplanar, _NormalStrength, _Smoothness, _Fish, _Sway, _Algae, _Desaturation, _SandRipples;
@@ -79,8 +79,8 @@ Shader "Cinematic Reef/Living Surface"
             float3 view = normalize(_WorldSpaceCameraPos-i.positionWS);
             float spec = pow(saturate(dot(n,normalize(view+light.direction))), lerp(8,100,_Smoothness)) * _Smoothness;
             float3 ambient = lerp(float3(.035,.065,.075),float3(.20,.27,.28),saturate(n.y*.5+.5));
-            float caustic = ReefCaustics(i.positionWS.xz + i.positionWS.y * .18,_Time.y) * saturate(n.y*.65+.3);
-            float3 color = albedo * (ambient + light.color * (ndl + caustic*_ReefCaustics) * light.shadowAttenuation);
+            float caustic = UnderwaterCaustics(i.positionWS.xz + i.positionWS.y * .18,_Time.y) * saturate(n.y*.65+.3);
+            float3 color = albedo * (ambient + light.color * (ndl + caustic*_UnderwaterCaustics) * light.shadowAttenuation);
             color += light.color * spec * light.shadowAttenuation * .38;
             return half4(color,1);
         }

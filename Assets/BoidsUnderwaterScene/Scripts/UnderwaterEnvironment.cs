@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace CinematicReef
+namespace BoidsUnderwaterScene
 {
     [ExecuteAlways]
-    public sealed class ReefEnvironment : MonoBehaviour
+    public sealed class UnderwaterEnvironment : MonoBehaviour
     {
         [SerializeField] private UniversalRenderPipelineAsset pipeline;
         [SerializeField] private Light sun;
@@ -28,14 +28,14 @@ namespace CinematicReef
         }
         private void Update()
         {
-            Shader.SetGlobalFloat("_ReefSurfaceHeight",surfaceHeight);
-            Shader.SetGlobalVector("_ReefAbsorption",absorption);
-            Shader.SetGlobalColor("_ReefFogTint",scatteringColor);
-            Shader.SetGlobalFloat("_ReefFogDensity",scatteringDensity);
-            Shader.SetGlobalFloat("_ReefShaftIntensity",lightShaftIntensity);
-            Shader.SetGlobalFloat("_ReefDistortion",distortion);
-            Shader.SetGlobalFloat("_ReefChromaticPixels",chromaticSeparationPixels);
-            Shader.SetGlobalFloat("_ReefCaustics",caustics);
+            Shader.SetGlobalFloat("_UnderwaterSurfaceHeight",surfaceHeight);
+            Shader.SetGlobalVector("_UnderwaterAbsorption",absorption);
+            Shader.SetGlobalColor("_UnderwaterFogTint",scatteringColor);
+            Shader.SetGlobalFloat("_UnderwaterFogDensity",scatteringDensity);
+            Shader.SetGlobalFloat("_UnderwaterShaftIntensity",lightShaftIntensity);
+            Shader.SetGlobalFloat("_UnderwaterDistortion",distortion);
+            Shader.SetGlobalFloat("_UnderwaterChromaticPixels",chromaticSeparationPixels);
+            Shader.SetGlobalFloat("_UnderwaterCaustics",caustics);
         }
         private void OnDisable()
         {

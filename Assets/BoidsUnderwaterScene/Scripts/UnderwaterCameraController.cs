@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace CinematicReef
+namespace BoidsUnderwaterScene
 {
-    public sealed class ReefCamera : MonoBehaviour
+    public sealed class UnderwaterCameraController : MonoBehaviour
     {
         [SerializeField] private float speed = 6f;
         private float yaw, pitch;

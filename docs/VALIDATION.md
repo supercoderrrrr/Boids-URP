@@ -7,7 +7,7 @@ The public update was validated on **2026-10-03** with Unity 2022.3.62f2, URP 14
 | Check | Result |
 | --- | --- |
 | Public C# compilation and Development Build | Passed |
-| Distributed scenes | Only `Assets/CinematicReef/Scenes/Boids.unity` |
+| Distributed scenes | Only `Assets/BoidsUnderwaterScene/Scenes/Boids.unity` |
 | Scene scripts, materials, school meshes and camera | Passed |
 | Excluded package and FFT dependencies | No excluded scene dependencies |
 | Spatial-grid equivalence | Exact match against brute-force radius queries for 257 test points, including negative coordinates and cell boundaries |

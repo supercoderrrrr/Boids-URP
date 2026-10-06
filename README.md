@@ -32,20 +32,20 @@ The underwater scene has also been refined, with an animated water surface, dept
 ### Run
 
 1. Open the repository in **Unity 2022.3.62f2** and allow Package Manager to resolve **URP 14.0.12**
-2. Open `Assets/CinematicReef/Scenes/Boids.unity`, or choose **Tools > Boids > Open Boids**
+2. Open `Assets/BoidsUnderwaterScene/Scenes/Boids.unity`, or choose **Tools > Boids > Open Boids**
 3. Press Play and click the Game view
 
 WASD moves relative to the view, Q/E descends and ascends, Shift accelerates, the mouse looks around, and Escape releases the cursor. Click the Game view to lock it again.
 
-Select a school to edit its route, speed, perception and separation settings. `ReefEnvironment` controls the underwater optics. **Tools > Boids > Validate Boids** checks the scene and routes. **Rebuild Boids** regenerates the scene and its generated assets, replacing manual edits to that generated content.
+Select a school to edit its route, speed, perception and separation settings. `UnderwaterEnvironment` controls the underwater optics. **Tools > Boids > Validate Boids** checks the scene and routes. **Rebuild Boids** regenerates the scene and its generated assets, replacing manual edits to that generated content.
 
 The showcase recordings use licensed fish and environment assets. Their source files and baked derivatives are excluded from the repository. The included `Boids` scene uses generated fish, corals and textures alongside the authored arch and cliff meshes, with the same schooling runtime. It is the only scene distributed here.
 
 ### Code and Evidence
 
-- [ReefSchool.cs](Assets/CinematicReef/Scripts/ReefSchool.cs): grid, local rules, corridor and vortex guidance, integration and instancing
-- [ReefSceneBuilder.cs](Assets/CinematicReef/Editor/ReefSceneBuilder.cs): reproducible scene and school setup
-- [ReefValidation.cs](Assets/CinematicReef/Editor/ReefValidation.cs): grid equivalence, school isolation, startup population and route checks
+- [BoidsSchool.cs](Assets/BoidsUnderwaterScene/Scripts/BoidsSchool.cs): grid, local rules, corridor and vortex guidance, integration and instancing
+- [BoidsUnderwaterSceneBuilder.cs](Assets/BoidsUnderwaterScene/Editor/BoidsUnderwaterSceneBuilder.cs): reproducible scene and school setup
+- [BoidsSceneValidation.cs](Assets/BoidsUnderwaterScene/Editor/BoidsSceneValidation.cs): grid equivalence, school isolation, startup population and route checks
 - [Architecture](docs/ARCHITECTURE.md) · [Validation](docs/VALIDATION.md) · [Capture notes](docs/media/README.md) · [Attribution](THIRD_PARTY_NOTICES.md)
 
 The grid reduces neighbor candidates in this distribution; a dense cell can still approach quadratic work. Separation and sphere casts provide steering rather than rigid-body collision resolution. The vortex is an art-directed velocity field, and the water rendering uses real-time optical approximations. Burst/Jobs, GPU Boids and SDF interaction are not implemented.
@@ -83,16 +83,16 @@ References: [Craig Reynolds](https://www.red3d.com/cwr/boids/), [Sebastian Lague
 ### 打开与操作
 
 1. 使用 **Unity 2022.3.62f2** 打开仓库，等待安装 **URP 14.0.12**
-2. 打开 `Assets/CinematicReef/Scenes/Boids.unity`，或选择 **Tools > Boids > Open Boids**
+2. 打开 `Assets/BoidsUnderwaterScene/Scenes/Boids.unity`，或选择 **Tools > Boids > Open Boids**
 3. 进入 Play 并点击 Game 窗口
 
 WASD 按观察方向移动，Q/E 下降与上升，Shift 加速，鼠标控制视角，Escape 释放鼠标，点击 Game 重新锁定。
 
-选中 School 可以调整路线、速度、感知与分离参数；`ReefEnvironment` 控制水下光学效果。**Validate Boids** 检查场景与路线，**Rebuild Boids** 会重新生成场景与资源并替换对应的手工修改。
+选中 School 可以调整路线、速度、感知与分离参数；`UnderwaterEnvironment` 控制水下光学效果。**Validate Boids** 检查场景与路线，**Rebuild Boids** 会重新生成场景与资源并替换对应的手工修改。
 
 展示录像使用了有许可限制的鱼与环境资源，源文件和烘焙衍生网格不随仓库分发。公开 `Boids` 场景使用生成的鱼、珊瑚和贴图，配合制作的拱门与岩壁网格，并运行同一套集群代码。仓库只分发这一套新场景。
 
-核心实现见 [ReefSchool.cs](Assets/CinematicReef/Scripts/ReefSchool.cs)，原理与验证见 [ARCHITECTURE.md](docs/ARCHITECTURE.md) 和 [VALIDATION.md](docs/VALIDATION.md)。录像使用固定时间步，播放帧率不代表实际运行 FPS。
+核心实现见 [BoidsSchool.cs](Assets/BoidsUnderwaterScene/Scripts/BoidsSchool.cs)，原理与验证见 [ARCHITECTURE.md](docs/ARCHITECTURE.md) 和 [VALIDATION.md](docs/VALIDATION.md)。录像使用固定时间步，播放帧率不代表实际运行 FPS。
 
 空间网格能减少当前分布下的候选数量，但极密集的单元格仍可能接近平方复杂度。分离和扫掠避障没有刚体碰撞约束，漩涡属于可控制的速度场，水面属于实时光学近似。尚未实现 Burst/Jobs、GPU Boids 或 SDF 交互。
 

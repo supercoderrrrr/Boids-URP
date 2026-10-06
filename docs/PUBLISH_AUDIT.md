@@ -2,7 +2,7 @@
 
 ## English
 
-The 2026-10-03 update publishes the new schooling runtime, URP presentation shaders, authored arch/cliff meshes, Blender source, reproducible public scene and current showcase media. `Assets/CinematicReef/Scenes/Boids.unity` is the only distributed scene. The older local scene is named `test` and remains outside this repository.
+The 2026-10-03 update publishes the new schooling runtime, URP presentation shaders, authored arch/cliff meshes, Blender source, reproducible public scene and current showcase media. `Assets/BoidsUnderwaterScene/Scenes/Boids.unity` is the only distributed scene. The older local scene is named `test` and remains outside this repository.
 
 Licensed fish and environment packages, their baked derivatives, imported textures of unverified provenance, FFT files, workstation configuration and editor caches are excluded. The public builder creates replacement fish, corals, outcrops and textures without copying those package files. Unity cloud project and organization identifiers remain empty in publication settings.
 

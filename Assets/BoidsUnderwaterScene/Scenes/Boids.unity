@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 9076110}
   - component: {fileID: 9076109}
   m_Layer: 6
-  m_Name: ReefOutcrop50
+  m_Name: RockOutcrop50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 73066692}
   - component: {fileID: 73066691}
   m_Layer: 6
-  m_Name: ReefOutcrop7
+  m_Name: RockOutcrop7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2059,7 +2059,7 @@ GameObject:
   - component: {fileID: 143934212}
   - component: {fileID: 143934211}
   m_Layer: 0
-  m_Name: ReefEnvironment
+  m_Name: UnderwaterEnvironment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8389,7 +8389,7 @@ GameObject:
   - component: {fileID: 238329464}
   - component: {fileID: 238329463}
   m_Layer: 6
-  m_Name: ReefOutcrop44
+  m_Name: RockOutcrop44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19025,7 +19025,7 @@ GameObject:
   - component: {fileID: 323391248}
   - component: {fileID: 323391247}
   m_Layer: 6
-  m_Name: ReefOutcrop63
+  m_Name: RockOutcrop63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19503,7 +19503,7 @@ GameObject:
   - component: {fileID: 344269711}
   - component: {fileID: 344269710}
   m_Layer: 6
-  m_Name: ReefOutcrop64
+  m_Name: RockOutcrop64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20346,7 +20346,7 @@ GameObject:
   - component: {fileID: 379855000}
   - component: {fileID: 379854999}
   m_Layer: 6
-  m_Name: ReefOutcrop34
+  m_Name: RockOutcrop34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20641,7 +20641,7 @@ GameObject:
   - component: {fileID: 399338530}
   - component: {fileID: 399338529}
   m_Layer: 6
-  m_Name: ReefOutcrop47
+  m_Name: RockOutcrop47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21843,7 +21843,7 @@ GameObject:
   - component: {fileID: 474819252}
   - component: {fileID: 474819251}
   m_Layer: 6
-  m_Name: ReefOutcrop49
+  m_Name: RockOutcrop49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22281,7 +22281,7 @@ GameObject:
   - component: {fileID: 492605826}
   - component: {fileID: 492605825}
   m_Layer: 6
-  m_Name: ReefOutcrop62
+  m_Name: RockOutcrop62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22387,7 +22387,7 @@ GameObject:
   - component: {fileID: 508476448}
   - component: {fileID: 508476447}
   m_Layer: 6
-  m_Name: ReefOutcrop1
+  m_Name: RockOutcrop1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22762,7 +22762,7 @@ GameObject:
   - component: {fileID: 534928151}
   - component: {fileID: 534928150}
   m_Layer: 6
-  m_Name: ReefOutcrop39
+  m_Name: RockOutcrop39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22951,7 +22951,7 @@ GameObject:
   - component: {fileID: 541013558}
   - component: {fileID: 541013557}
   m_Layer: 6
-  m_Name: ReefOutcrop65
+  m_Name: RockOutcrop65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23822,7 +23822,7 @@ GameObject:
   - component: {fileID: 590627854}
   - component: {fileID: 590627853}
   m_Layer: 6
-  m_Name: ReefOutcrop28
+  m_Name: RockOutcrop28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24034,7 +24034,7 @@ GameObject:
   - component: {fileID: 593042708}
   - component: {fileID: 593042707}
   m_Layer: 6
-  m_Name: ReefOutcrop5
+  m_Name: RockOutcrop5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24346,7 +24346,7 @@ GameObject:
   - component: {fileID: 619986445}
   - component: {fileID: 619986444}
   m_Layer: 6
-  m_Name: ReefOutcrop27
+  m_Name: RockOutcrop27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24892,7 +24892,7 @@ GameObject:
   - component: {fileID: 655885067}
   - component: {fileID: 655885066}
   m_Layer: 6
-  m_Name: ReefOutcrop58
+  m_Name: RockOutcrop58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25931,7 +25931,7 @@ GameObject:
   - component: {fileID: 693291421}
   - component: {fileID: 693291420}
   m_Layer: 6
-  m_Name: ReefOutcrop48
+  m_Name: RockOutcrop48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26105,7 +26105,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce835be0d5f86d84ead0ba85a57e990b,
         type: 3}
       propertyPath: m_Name
-      value: ErodedReefArch
+      value: RockArch
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ce835be0d5f86d84ead0ba85a57e990b,
         type: 3}
@@ -27184,7 +27184,7 @@ GameObject:
   - component: {fileID: 757340945}
   - component: {fileID: 757340944}
   m_Layer: 6
-  m_Name: ReefOutcrop26
+  m_Name: RockOutcrop26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27725,7 +27725,7 @@ GameObject:
   - component: {fileID: 777259013}
   - component: {fileID: 777259012}
   m_Layer: 6
-  m_Name: ReefOutcrop66
+  m_Name: RockOutcrop66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28037,7 +28037,7 @@ GameObject:
   - component: {fileID: 809090255}
   - component: {fileID: 809090254}
   m_Layer: 6
-  m_Name: ReefOutcrop54
+  m_Name: RockOutcrop54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28332,7 +28332,7 @@ GameObject:
   - component: {fileID: 820740937}
   - component: {fileID: 820740936}
   m_Layer: 6
-  m_Name: ReefOutcrop37
+  m_Name: RockOutcrop37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28438,7 +28438,7 @@ GameObject:
   - component: {fileID: 823496663}
   - component: {fileID: 823496662}
   m_Layer: 6
-  m_Name: ReefOutcrop45
+  m_Name: RockOutcrop45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28624,7 +28624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841336961}
   m_Layer: 0
-  m_Name: AuthoredReefArchitecture
+  m_Name: UnderwaterRocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29234,7 +29234,7 @@ GameObject:
   - component: {fileID: 909437277}
   - component: {fileID: 909437276}
   m_Layer: 6
-  m_Name: ReefOutcrop35
+  m_Name: RockOutcrop35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30476,7 +30476,7 @@ GameObject:
   - component: {fileID: 983068392}
   - component: {fileID: 983068391}
   m_Layer: 6
-  m_Name: ReefOutcrop3
+  m_Name: RockOutcrop3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30582,7 +30582,7 @@ GameObject:
   - component: {fileID: 990064600}
   - component: {fileID: 990064599}
   m_Layer: 6
-  m_Name: ReefOutcrop36
+  m_Name: RockOutcrop36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30960,7 +30960,7 @@ GameObject:
   - component: {fileID: 1010111687}
   - component: {fileID: 1010111686}
   m_Layer: 6
-  m_Name: ReefOutcrop56
+  m_Name: RockOutcrop56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31461,7 +31461,7 @@ GameObject:
   - component: {fileID: 1041822795}
   - component: {fileID: 1041822794}
   m_Layer: 6
-  m_Name: ReefOutcrop57
+  m_Name: RockOutcrop57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31567,7 +31567,7 @@ GameObject:
   - component: {fileID: 1054286446}
   - component: {fileID: 1054286445}
   m_Layer: 6
-  m_Name: ReefOutcrop67
+  m_Name: RockOutcrop67
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32045,7 +32045,7 @@ GameObject:
   - component: {fileID: 1080648026}
   - component: {fileID: 1080648025}
   m_Layer: 6
-  m_Name: ReefOutcrop40
+  m_Name: RockOutcrop40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32802,7 +32802,7 @@ GameObject:
   - component: {fileID: 1109158334}
   - component: {fileID: 1109158333}
   m_Layer: 6
-  m_Name: ReefOutcrop16
+  m_Name: RockOutcrop16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33675,7 +33675,7 @@ GameObject:
   - component: {fileID: 1141613132}
   - component: {fileID: 1141613131}
   m_Layer: 6
-  m_Name: ReefOutcrop61
+  m_Name: RockOutcrop61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34070,7 +34070,7 @@ GameObject:
   - component: {fileID: 1148726603}
   - component: {fileID: 1148726602}
   m_Layer: 6
-  m_Name: ReefOutcrop46
+  m_Name: RockOutcrop46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34694,7 +34694,7 @@ GameObject:
   - component: {fileID: 1202633568}
   - component: {fileID: 1202633567}
   m_Layer: 6
-  m_Name: ReefOutcrop14
+  m_Name: RockOutcrop14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35166,7 +35166,7 @@ GameObject:
   - component: {fileID: 1225382353}
   - component: {fileID: 1225382352}
   m_Layer: 6
-  m_Name: ReefOutcrop31
+  m_Name: RockOutcrop31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35355,7 +35355,7 @@ GameObject:
   - component: {fileID: 1232774202}
   - component: {fileID: 1232774201}
   m_Layer: 6
-  m_Name: ReefOutcrop53
+  m_Name: RockOutcrop53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36022,7 +36022,7 @@ GameObject:
   - component: {fileID: 1270052952}
   - component: {fileID: 1270052951}
   m_Layer: 6
-  m_Name: ReefOutcrop0
+  m_Name: RockOutcrop0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36429,7 +36429,7 @@ GameObject:
   - component: {fileID: 1296466063}
   - component: {fileID: 1296466062}
   m_Layer: 6
-  m_Name: ReefOutcrop9
+  m_Name: RockOutcrop9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36535,7 +36535,7 @@ GameObject:
   - component: {fileID: 1303518460}
   - component: {fileID: 1303518459}
   m_Layer: 6
-  m_Name: ReefOutcrop11
+  m_Name: RockOutcrop11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36807,7 +36807,7 @@ GameObject:
   - component: {fileID: 1326680920}
   - component: {fileID: 1326680919}
   m_Layer: 6
-  m_Name: ReefOutcrop29
+  m_Name: RockOutcrop29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37079,7 +37079,7 @@ GameObject:
   - component: {fileID: 1360569100}
   - component: {fileID: 1360569099}
   m_Layer: 6
-  m_Name: ReefOutcrop12
+  m_Name: RockOutcrop12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43426,7 +43426,7 @@ GameObject:
   - component: {fileID: 1439451052}
   - component: {fileID: 1439451051}
   m_Layer: 6
-  m_Name: ReefOutcrop17
+  m_Name: RockOutcrop17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43967,7 +43967,7 @@ GameObject:
   - component: {fileID: 1474229631}
   - component: {fileID: 1474229630}
   m_Layer: 6
-  m_Name: ReefOutcrop55
+  m_Name: RockOutcrop55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44167,7 +44167,7 @@ GameObject:
   - component: {fileID: 1491502516}
   - component: {fileID: 1491502515}
   m_Layer: 6
-  m_Name: ReefOutcrop32
+  m_Name: RockOutcrop32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44356,7 +44356,7 @@ GameObject:
   - component: {fileID: 1498575561}
   - component: {fileID: 1498575560}
   m_Layer: 6
-  m_Name: ReefOutcrop8
+  m_Name: RockOutcrop8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44920,7 +44920,7 @@ GameObject:
   - component: {fileID: 1524806692}
   - component: {fileID: 1524806691}
   m_Layer: 6
-  m_Name: ReefOutcrop6
+  m_Name: RockOutcrop6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45318,7 +45318,7 @@ GameObject:
   - component: {fileID: 1546130371}
   - component: {fileID: 1546130370}
   m_Layer: 6
-  m_Name: ReefOutcrop15
+  m_Name: RockOutcrop15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46171,7 +46171,7 @@ GameObject:
   - component: {fileID: 1576864491}
   - component: {fileID: 1576864490}
   m_Layer: 6
-  m_Name: ReefOutcrop52
+  m_Name: RockOutcrop52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46277,7 +46277,7 @@ GameObject:
   - component: {fileID: 1582900171}
   - component: {fileID: 1582900170}
   m_Layer: 6
-  m_Name: ReefOutcrop20
+  m_Name: RockOutcrop20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46383,7 +46383,7 @@ GameObject:
   - component: {fileID: 1589032651}
   - component: {fileID: 1589032650}
   m_Layer: 6
-  m_Name: ReefOutcrop59
+  m_Name: RockOutcrop59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51711,7 +51711,7 @@ GameObject:
   - component: {fileID: 1600687785}
   - component: {fileID: 1600687784}
   m_Layer: 6
-  m_Name: ReefOutcrop18
+  m_Name: RockOutcrop18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53837,7 +53837,7 @@ GameObject:
   - component: {fileID: 1775734785}
   - component: {fileID: 1775734784}
   m_Layer: 6
-  m_Name: ReefOutcrop4
+  m_Name: RockOutcrop4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54129,7 +54129,7 @@ GameObject:
   - component: {fileID: 1787071815}
   - component: {fileID: 1787071814}
   m_Layer: 6
-  m_Name: ReefOutcrop41
+  m_Name: RockOutcrop41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55371,7 +55371,7 @@ GameObject:
   - component: {fileID: 1885887761}
   - component: {fileID: 1885887760}
   m_Layer: 6
-  m_Name: ReefOutcrop13
+  m_Name: RockOutcrop13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55560,7 +55560,7 @@ GameObject:
   - component: {fileID: 1927657019}
   - component: {fileID: 1927657018}
   m_Layer: 6
-  m_Name: ReefOutcrop43
+  m_Name: RockOutcrop43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56330,7 +56330,7 @@ GameObject:
   - component: {fileID: 1961707763}
   - component: {fileID: 1961707762}
   m_Layer: 6
-  m_Name: ReefOutcrop19
+  m_Name: RockOutcrop19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56622,7 +56622,7 @@ GameObject:
   - component: {fileID: 1972667950}
   - component: {fileID: 1972667949}
   m_Layer: 6
-  m_Name: ReefOutcrop2
+  m_Name: RockOutcrop2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57329,7 +57329,7 @@ GameObject:
   - component: {fileID: 2002493120}
   - component: {fileID: 2002493119}
   m_Layer: 6
-  m_Name: ReefOutcrop22
+  m_Name: RockOutcrop22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57601,7 +57601,7 @@ GameObject:
   - component: {fileID: 2012403524}
   - component: {fileID: 2012403523}
   m_Layer: 6
-  m_Name: ReefOutcrop42
+  m_Name: RockOutcrop42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58102,7 +58102,7 @@ GameObject:
   - component: {fileID: 2033152010}
   - component: {fileID: 2033152009}
   m_Layer: 6
-  m_Name: ReefOutcrop60
+  m_Name: RockOutcrop60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58477,7 +58477,7 @@ GameObject:
   - component: {fileID: 2051935265}
   - component: {fileID: 2051935264}
   m_Layer: 6
-  m_Name: ReefOutcrop21
+  m_Name: RockOutcrop21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58583,7 +58583,7 @@ GameObject:
   - component: {fileID: 2057967248}
   - component: {fileID: 2057967247}
   m_Layer: 6
-  m_Name: ReefOutcrop23
+  m_Name: RockOutcrop23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58689,7 +58689,7 @@ GameObject:
   - component: {fileID: 2058969271}
   - component: {fileID: 2058969270}
   m_Layer: 6
-  m_Name: ReefOutcrop33
+  m_Name: RockOutcrop33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58878,7 +58878,7 @@ GameObject:
   - component: {fileID: 2099798337}
   - component: {fileID: 2099798336}
   m_Layer: 6
-  m_Name: ReefOutcrop51
+  m_Name: RockOutcrop51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59399,7 +59399,7 @@ GameObject:
   - component: {fileID: 2124347637}
   - component: {fileID: 2124347636}
   m_Layer: 6
-  m_Name: ReefOutcrop30
+  m_Name: RockOutcrop30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59588,7 +59588,7 @@ GameObject:
   - component: {fileID: 2126410975}
   - component: {fileID: 2126410974}
   m_Layer: 6
-  m_Name: ReefOutcrop25
+  m_Name: RockOutcrop25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59777,7 +59777,7 @@ GameObject:
   - component: {fileID: 2127286137}
   - component: {fileID: 2127286136}
   m_Layer: 6
-  m_Name: ReefOutcrop38
+  m_Name: RockOutcrop38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59986,7 +59986,7 @@ GameObject:
   - component: {fileID: 2138317380}
   - component: {fileID: 2138317379}
   m_Layer: 6
-  m_Name: ReefOutcrop10
+  m_Name: RockOutcrop10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60092,7 +60092,7 @@ GameObject:
   - component: {fileID: 2141938463}
   - component: {fileID: 2141938462}
   m_Layer: 6
-  m_Name: ReefOutcrop24
+  m_Name: RockOutcrop24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

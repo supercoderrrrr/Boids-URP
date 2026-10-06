@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace CinematicReef
+namespace BoidsUnderwaterScene
 {
-    public sealed class ReefUnderwaterFeature : ScriptableRendererFeature
+    public sealed class UnderwaterRendererFeature : ScriptableRendererFeature
     {
         [SerializeField] private Shader shader;
         private Material material;
@@ -29,17 +29,17 @@ namespace CinematicReef
         {
             private readonly Material material;
             private RTHandle light, composite;
-            private readonly ProfilingSampler sampler = new ProfilingSampler("Reef underwater and shadowed scattering");
+            private readonly ProfilingSampler sampler = new ProfilingSampler("Underwater scattering");
             public RTHandle Source;
             public WaterPass(Material value) { material = value; ConfigureInput(ScriptableRenderPassInput.Depth | ScriptableRenderPassInput.Color); }
             public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData data)
             {
                 var desc = data.cameraData.cameraTargetDescriptor;
                 desc.depthBufferBits = 0; desc.msaaSamples = 1;
-                RenderingUtils.ReAllocateIfNeeded(ref composite, desc, FilterMode.Bilinear, TextureWrapMode.Clamp, name: "_ReefComposite");
+                RenderingUtils.ReAllocateIfNeeded(ref composite, desc, FilterMode.Bilinear, TextureWrapMode.Clamp, name: "_UnderwaterComposite");
                 desc.width = Mathf.Max(1, desc.width / 2); desc.height = Mathf.Max(1, desc.height / 2);
                 desc.colorFormat = RenderTextureFormat.ARGBHalf;
-                RenderingUtils.ReAllocateIfNeeded(ref light, desc, FilterMode.Bilinear, TextureWrapMode.Clamp, name: "_ReefScattering");
+                RenderingUtils.ReAllocateIfNeeded(ref light, desc, FilterMode.Bilinear, TextureWrapMode.Clamp, name: "_UnderwaterScattering");
             }
             public override void Execute(ScriptableRenderContext context, ref RenderingData data)
             {
@@ -48,8 +48,8 @@ namespace CinematicReef
                 using (new ProfilingScope(cmd, sampler))
                 {
                     Blitter.BlitCameraTexture(cmd, Source, light, material, 0);
-                    cmd.SetGlobalTexture("_ReefScattering", light.nameID);
-                    cmd.SetGlobalVector("_ReefScattering_TexelSize", new Vector4(1f / light.rt.width, 1f / light.rt.height, light.rt.width, light.rt.height));
+                    cmd.SetGlobalTexture("_UnderwaterScattering", light.nameID);
+                    cmd.SetGlobalVector("_UnderwaterScattering_TexelSize", new Vector4(1f / light.rt.width, 1f / light.rt.height, light.rt.width, light.rt.height));
                     Blitter.BlitCameraTexture(cmd, Source, composite, material, 1);
                     Blitter.BlitCameraTexture(cmd, composite, Source);
                 }
